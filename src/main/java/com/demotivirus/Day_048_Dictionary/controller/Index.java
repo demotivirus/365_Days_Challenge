@@ -1,4 +1,4 @@
-package com.demotivirus.Day_048.controller;
+package com.demotivirus.Day_048_Dictionary.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

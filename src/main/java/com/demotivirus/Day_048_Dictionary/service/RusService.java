@@ -1,7 +1,7 @@
-package com.demotivirus.Day_048.service;
+package com.demotivirus.Day_048_Dictionary.service;
 
 
-import com.demotivirus.Day_048.model.Rus;
+import com.demotivirus.Day_048_Dictionary.model.Rus;
 
 import java.util.List;
 
