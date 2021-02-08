@@ -1,8 +1,7 @@
-package com.demotivirus.Day_048.controller;
+package com.demotivirus.Day_048_Dictionary.controller;
 
-import com.demotivirus.Day_048.model.Eng;
-import com.demotivirus.Day_048.model.Rus;
-import com.demotivirus.Day_048.service.EngService;
+import com.demotivirus.Day_048_Dictionary.model.Eng;
+import com.demotivirus.Day_048_Dictionary.service.EngService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,4 +1,4 @@
-package com.demotivirus.Day_048.model;
+package com.demotivirus.Day_048_Dictionary.model;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
