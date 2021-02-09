@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Русские слова</title>
+    <link rel="stylesheet" href="..static/css/style.css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" href="..static/css/user-style.css" th:href="@{/css/user-style.css}"/>
+</head>
+<body>
+<div id="wrapper">
+    <div id="header">
+        <h2>Список русских слов</h2>
+    </div>
+</div>
+
+<p><input type="button" value="Add word" onclick="window.location.href='add-word'; return false"></p>
+<p><input type="button" value="Add translation" onclick="window.location.href='rus-eng-translation'; return false"></p>
+
+<div id="container">
+    <div id="content">
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Word</th>
+            </tr>
+
+            <tr th:each="word : ${rusWords}">
+                <td><span th:text="${word.id}">Id</span></td>
+                <td><span th:text="${word.word}">Login</span></td>
+<!--                <td>-->
+<!--                    <a th:href="@{/user/update/{id}(id=${word.id})}">Edit</a>-->
+<!--                    |-->
+<!--                    <a th:href="@{/user/delete/{id}(id=${word.id})}"-->
+<!--                       onclick="if (!(confirm('Are you sure?'))) return false" >Delete</a>-->
+<!--                </td>-->
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
