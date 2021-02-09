@@ -44,4 +44,9 @@ public class Student {
         this.likedCourses = Stream.of(courses).collect(Collectors.toSet());
         this.likedCourses.forEach(x -> x.getLikes().add(this));
     }
+
+    public void addCourse(Course course){
+        likedCourses.add(course);
+        course.getLikes().add(this);
+    }
 }

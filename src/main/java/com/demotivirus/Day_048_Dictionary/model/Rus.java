@@ -1,7 +1,9 @@
 package com.demotivirus.Day_048_Dictionary.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,12 +20,13 @@ import java.util.List;
 
 @Entity
 @Table(name = "rus")
-@Data
+@Data @ToString(doNotUseGetters = true)
 @RequiredArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true, doNotUseGetters = true)
 public class Rus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "word")
     private String word;
