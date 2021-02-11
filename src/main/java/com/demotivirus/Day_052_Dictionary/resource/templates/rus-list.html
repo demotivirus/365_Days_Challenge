@@ -25,18 +25,19 @@
                 <th>Id</th>
                 <th>Rus</th>
                 <th>Eng</th>
+                <th>Edit</th>
             </tr>
 
             <tr th:each="word : ${rusWords}">
                 <td><span th:text="${word.id}">Id</span></td>
                 <td><span th:text="${word.word}">Login</span></td>
                 <td><span th:text="${word.rusEng}">Login</span></td>
-<!--                <td>-->
-<!--                    <a th:href="@{/user/update/{id}(id=${word.id})}">Edit</a>-->
-<!--                    |-->
-<!--                    <a th:href="@{/user/delete/{id}(id=${word.id})}"-->
-<!--                       onclick="if (!(confirm('Are you sure?'))) return false" >Delete</a>-->
-<!--                </td>-->
+                <td>
+                    <a th:href="@{/rus/update/{id}(id=${word.id})}">Edit</a>
+                    |
+                    <a th:href="@{/rus/delete/{id}(id=${word.id})}"
+                       onclick="if (!(confirm('Are you sure?'))) return false" >Delete</a>
+                </td>
             </tr>
         </table>
     </div>

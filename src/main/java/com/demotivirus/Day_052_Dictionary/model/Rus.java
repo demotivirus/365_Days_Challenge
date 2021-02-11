@@ -1,9 +1,7 @@
 package com.demotivirus.Day_052_Dictionary.model;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,9 +20,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "rus")
-@Data @ToString(doNotUseGetters = true)
+@Data
 @RequiredArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true, doNotUseGetters = true)
 public class Rus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,5 +51,9 @@ public class Rus {
     public void addEngTranslation(Eng eng){
         rusEng.add(eng);
         eng.getEngRus().add(this);
+    }
+
+    public void addRusEng(String word){
+        rusEng.add(new Eng(word));
     }
 }

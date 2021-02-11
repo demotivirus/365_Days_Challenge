@@ -1,7 +1,6 @@
 package com.demotivirus.Day_052_Dictionary.model;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Column;
@@ -19,7 +18,6 @@ import java.util.List;
 @Table(name = "eng")
 @Data
 @RequiredArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true, doNotUseGetters = true)
 public class Eng {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
