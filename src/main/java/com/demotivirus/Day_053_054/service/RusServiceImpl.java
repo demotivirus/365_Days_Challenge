@@ -80,7 +80,6 @@ public class RusServiceImpl implements RusService {
 
     @Override
     public Long findIdByWord(String word) {
-        //System.err.println("Find id by " + word + " is: " + rusDao.findByWord(word).getId());
         return rusDao.findIdByWord(word);
     }
 
