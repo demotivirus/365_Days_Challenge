@@ -55,28 +55,55 @@ public class RusServiceImpl implements RusService {
 
     @Override
     public void saveEngTranslation(Rus rus) {
-        rus.setWord(rus.getWord().toLowerCase());
+        if (rus.getWord() != null) {
+            rus.setWord(rus.getWord().toLowerCase());
+        }
+        if (rus.getTranslationWord() != null) {
+            rus.setTranslationWord(rus.getTranslationWord().toLowerCase());
+        }
 
-        if (findIdByWord(rus.getWord()) == null) {
+        if (rus.getId() == null){
             Rus parseRus = new Rus();
             parseRus.setWord(rus.getWord());
             parseRus.addRusEng(rus.getTranslationWord());
             rusDao.save(parseRus);
         }
         else {
-            Rus findingRus = rusDao.getOne(findIdByWord(rus.getWord()));
-            List<String> allEngWordsByRusId = findAllEngWordsByRusId(rusDao.findIdByWord(rus.getWord()));
-            if (!allEngWordsByRusId.contains(rus.getTranslationWord())){
+            Rus parseRus = getRusById(rus.getId());
+            List<String> allEngWordsByRusId = findAllEngWordsByRusId(rus.getId());
+            if (!allEngWordsByRusId.contains(rus.getTranslationWord())) {
                 System.err.println("Not contain " + rus.getTranslationWord());
-
-                findingRus.addRusEng(rus.getTranslationWord());
-
-                System.err.println("Add to word [" + rus.getWord() + "] translation [" + rus.getTranslationWord() + "]");
-                rusDao.save(findingRus);
-            }
-            else System.err.println("Not add " + rus.getTranslationWord() + " because translation exists");
+                parseRus.addRusEng(rus.getTranslationWord());
+                rusDao.save(parseRus);
+                System.err.println("Add to word [" + parseRus.getWord() + "] translation [" + rus.getTranslationWord() + "]");
+            } else System.err.println("Not add " + rus.getTranslationWord() + " because translation exists");
         }
     }
+
+//    @Override
+//    public void saveEngTranslation(Rus rus) {
+//        rus.setWord(rus.getWord().toLowerCase());
+//
+//        if (findIdByWord(rus.getWord()) == null) {
+//            Rus parseRus = new Rus();
+//            parseRus.setWord(rus.getWord());
+//            parseRus.addRusEng(rus.getTranslationWord());
+//            rusDao.save(parseRus);
+//        }
+//        else {
+//            Rus findingRus = rusDao.getOne(findIdByWord(rus.getWord()));
+//            List<String> allEngWordsByRusId = findAllEngWordsByRusId(rusDao.findIdByWord(rus.getWord()));
+//            if (!allEngWordsByRusId.contains(rus.getTranslationWord())){
+//                System.err.println("Not contain " + rus.getTranslationWord());
+//
+//                findingRus.addRusEng(rus.getTranslationWord());
+//
+//                System.err.println("Add to word [" + rus.getWord() + "] translation [" + rus.getTranslationWord() + "]");
+//                rusDao.save(findingRus);
+//            }
+//            else System.err.println("Not add " + rus.getTranslationWord() + " because translation exists");
+//        }
+//    }
 
     @Override
     public Long findIdByWord(String word) {

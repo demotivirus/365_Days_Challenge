@@ -63,8 +63,8 @@ public class RusController {
         return model;
     }
 
-    @PostMapping("save-individual-translation")
-    public String saveEngTranslationIndividual(@ModelAttribute("rus") Rus rus){
+    @PostMapping("add-eng-translation/{id}")
+    public String saveEngTranslationIndividual(@PathVariable("id") long id, @ModelAttribute("rus") Rus rus){
         rusService.saveEngTranslation(rus);
         return "redirect:/rus/list";
     }
