@@ -58,7 +58,7 @@ public class RusServiceImpl implements RusService {
             Rus parseRus = new Rus();
             parseRus.setWord(rus.getWord());
             parseRus.addRusEng(rus.getTranslationWord());
-            rusDao.save(parseRus;
+            rusDao.save(parseRus);
         }
         else {
             Rus findingRus = rusDao.getOne(findIdByWord(rus.getWord()));
