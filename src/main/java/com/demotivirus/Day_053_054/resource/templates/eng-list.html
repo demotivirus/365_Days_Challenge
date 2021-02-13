@@ -15,22 +15,29 @@
     </div>
 </div>
 
-<p><input type="button" value="Add word" onclick="window.location.href='add-word'; return false"></p>
+<p>
+    <input type="button" value="Add word" onclick="window.location.href='add-word'; return false">
+    <a href="add-word">+</a>
+</p>
+<p>
+    <input type="button" value="Add translation" onclick="window.location.href='add-rus-translation'; return false">
+    <a href="add-eng-translation">+</a>
+</p>
 
 <div id="container">
     <div id="content">
         <table>
             <tr>
                 <th>Id</th>
-                <th>Rus</th>
                 <th>Eng</th>
+                <th>Rus</th>
                 <th>Edit</th>
             </tr>
 
             <tr th:each="word : ${words}">
                 <td><span th:text="${word.id}">Id</span></td>
-                <td><span th:text="${word.word}">Login</span></td>
-                <td><span th:text="${word.engRus}">Login</span></td>
+                <td><span th:text="${word.word}">Eng</span></td>
+                <td><span th:text="${word.engRus}">Rus</span></td>
                 <td>
                     <a th:href="@{/eng/update/{id}(id=${word.id})}">Edit</a>
                     |
