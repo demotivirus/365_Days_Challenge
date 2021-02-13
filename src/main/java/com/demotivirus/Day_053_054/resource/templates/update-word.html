@@ -14,7 +14,7 @@
 </div>
 
 <div id="container">
-    <form th:action="@{/rus/update-word}" th:object="${words}" method="post">
+    <form th:action="@{/rus/update/{id}(id=${words.id})}" th:object="${words}" method="post">
         <table>
             <tr>
                 <td>Word:::</td>

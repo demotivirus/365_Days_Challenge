@@ -4,38 +4,44 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Русские слова</title>
+    <title>English words</title>
     <link rel="stylesheet" href="..static/css/style.css" th:href="@{/css/style.css}"/>
     <link rel="stylesheet" href="..static/css/user-style.css" th:href="@{/css/user-style.css}"/>
 </head>
 <body>
 <div id="wrapper">
     <div id="header">
-        <h2>Список русских слов</h2>
+        <h2>English words</h2>
     </div>
 </div>
 
-<p><input type="button" value="Add word" onclick="window.location.href='add-word'; return false"></p>
-<p><input type="button" value="Add translation" onclick="window.location.href='add-eng-translation'; return false"></p>
+<p>
+    <input type="button" value="Add word" onclick="window.location.href='add-word'; return false">
+    <a href="add-word">+</a>
+</p>
+<p>
+    <input type="button" value="Add translation" onclick="window.location.href='add-rus-translation'; return false">
+    <a href="add-eng-translation">+</a>
+</p>
 
 <div id="container">
     <div id="content">
         <table>
             <tr>
                 <th>Id</th>
-                <th>Rus</th>
                 <th>Eng</th>
+                <th>Rus</th>
                 <th>Edit</th>
             </tr>
 
             <tr th:each="word : ${words}">
                 <td><span th:text="${word.id}">Id</span></td>
-                <td><span th:text="${word.word}">Login</span></td>
-                <td><span th:text="${word.rusEng}">Login</span></td>
+                <td><span th:text="${word.word}">Eng</span></td>
+                <td><span th:text="${word.engRus}">Rus</span></td>
                 <td>
-                    <a th:href="@{/rus/update/{id}(id=${word.id})}">Edit</a>
+                    <a th:href="@{/eng/update/{id}(id=${word.id})}">Edit</a>
                     |
-                    <a th:href="@{/rus/delete/{id}(id=${word.id})}"
+                    <a th:href="@{/eng/delete/{id}(id=${word.id})}"
                        onclick="if (!(confirm('Are you sure?'))) return false" >Delete</a>
                 </td>
             </tr>

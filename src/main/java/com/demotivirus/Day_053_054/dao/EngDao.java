@@ -1,6 +1,6 @@
-package com.demotivirus.Day_053_Dictionary.dao;
+package com.demotivirus.Day_053_054.dao;
 
-import com.demotivirus.Day_053_Dictionary.model.Eng;
+import com.demotivirus.Day_053_054.model.Eng;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

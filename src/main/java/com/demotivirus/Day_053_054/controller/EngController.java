@@ -1,7 +1,7 @@
-package com.demotivirus.Day_053_Dictionary.controller;
+package com.demotivirus.Day_053_054.controller;
 
-import com.demotivirus.Day_053_Dictionary.model.Eng;
-import com.demotivirus.Day_053_Dictionary.service.EngService;
+import com.demotivirus.Day_053_054.model.Eng;
+import com.demotivirus.Day_053_054.service.EngService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

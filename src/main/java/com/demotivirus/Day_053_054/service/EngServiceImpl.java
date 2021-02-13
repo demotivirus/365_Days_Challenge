@@ -1,9 +1,9 @@
-package com.demotivirus.Day_053_Dictionary.service;
+package com.demotivirus.Day_053_054.service;
 
 import com.demotivirus.Day_024.error.NotFoundException;
-import com.demotivirus.Day_053_Dictionary.dao.EngDao;
-import com.demotivirus.Day_053_Dictionary.model.Eng;
-import com.demotivirus.Day_053_Dictionary.model.Rus;
+import com.demotivirus.Day_053_054.dao.EngDao;
+import com.demotivirus.Day_053_054.model.Eng;
+import com.demotivirus.Day_053_054.model.Rus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,7 +1,7 @@
-package com.demotivirus.Day_053_Dictionary.controller;
+package com.demotivirus.Day_053_054.controller;
 
-import com.demotivirus.Day_053_Dictionary.model.Rus;
-import com.demotivirus.Day_053_Dictionary.service.RusService;
+import com.demotivirus.Day_053_054.model.Rus;
+import com.demotivirus.Day_053_054.service.RusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("rus")
+@RequestMapping("rus/")
 public class RusController {
     @Autowired
     private RusService rusService;
@@ -24,17 +24,12 @@ public class RusController {
         return "rus-list";
     }
 
+///////////////////////////
+
     @GetMapping("add-word")
     public String showFormAdd(Model model){
         model.addAttribute("word", new Rus());
         return "add-word";
-    }
-
-    @GetMapping("add-eng-translation")
-    public ModelAndView showFormTranslation(ModelAndView model) {
-        model.addObject("form", new Rus());
-        model.setViewName("add-word-translation");
-        return model;
     }
 
     @PostMapping("save-word")
@@ -43,21 +38,50 @@ public class RusController {
         return "redirect:/rus/list";
     }
 
+////////////////////////////
+
+    @GetMapping("add-eng-translation")
+    public ModelAndView showFormTranslation(ModelAndView model) {
+        model.addObject("form", new Rus());
+        model.setViewName("add-word-translation");
+        return model;
+    }
+
     @PostMapping("save-translation")
     public String saveEngTranslation(@ModelAttribute("rus") Rus rus){
         rusService.saveEngTranslation(rus);
         return "redirect:/rus/list";
     }
 
+////////////////////////////
+
+    @GetMapping("add-eng-translation/{id}")
+    public ModelAndView showFormTranslation(@PathVariable("id") Long id, ModelAndView model) {
+        Rus rus = rusService.getRusById(id);
+        model.addObject("form", rus);
+        model.setViewName("add-individual-translation");
+        return model;
+    }
+
+    @PostMapping("save-individual-translation")
+    public String saveEngTranslationIndividual(@ModelAttribute("rus") Rus rus){
+        rusService.saveEngTranslation(rus);
+        return "redirect:/rus/list";
+    }
+
+////////////////////////////
+
     @GetMapping("update/{id}")
-    public String updateRusWordShowForm(@PathVariable("id") Long id, Model model) {
+    public String updateRusWordShowForm(@PathVariable("id") long id, Model model) {
         model.addAttribute("words", rusService.getRusById(id));
         return "update-word";
     }
 
-    @PostMapping("update-word")
-    public String updateRusWord(@ModelAttribute Rus rus) {
-        rusService.saveWord(rus);
-        return "redirect:/rus";
+    @PostMapping("update/{id}")
+    public String updateRusWord(@PathVariable("id") long id, @ModelAttribute Rus rus) {
+//        Rus parseRus = rusService.getRusById(id);
+//        parseRus.setWord(rus.getWord());
+        rusService.updateWord(rus);
+        return "redirect:/rus/list";
     }
 }

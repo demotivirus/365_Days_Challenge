@@ -1,4 +1,4 @@
-package com.demotivirus.Day_053_Dictionary;
+package com.demotivirus.Day_053_054;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
