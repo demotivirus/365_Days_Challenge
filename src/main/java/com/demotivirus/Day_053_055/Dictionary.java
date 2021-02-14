@@ -1,4 +1,4 @@
-package com.demotivirus.Day_053_054;
+package com.demotivirus.Day_053_055;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

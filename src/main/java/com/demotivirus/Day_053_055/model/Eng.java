@@ -1,4 +1,4 @@
-package com.demotivirus.Day_053_054.model;
+package com.demotivirus.Day_053_055.model;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

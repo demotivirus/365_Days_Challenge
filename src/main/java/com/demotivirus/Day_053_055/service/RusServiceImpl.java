@@ -1,8 +1,8 @@
-package com.demotivirus.Day_053_054.service;
+package com.demotivirus.Day_053_055.service;
 
 import com.demotivirus.Day_024.error.NotFoundException;
-import com.demotivirus.Day_053_054.dao.RusDao;
-import com.demotivirus.Day_053_054.model.Rus;
+import com.demotivirus.Day_053_055.dao.RusDao;
+import com.demotivirus.Day_053_055.model.Rus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,11 +24,19 @@ public class RusServiceImpl implements RusService {
     }
 
     @Override
-    public Rus updateWord(Rus rus) {
+    public void updateWord(Rus rus) {
         rus.setWord(rus.getWord().toLowerCase());
-        Rus parseRus = getRusById(rus.getId());
-        parseRus.setWord(rus.getWord());
-        return rusDao.save(parseRus);
+        Rus word = rusDao.findByWord(rus.getWord());
+        String wordInDb = "";
+        if (word != null){
+            wordInDb = word.getWord();
+        }
+        if (!wordInDb.equals(rus.getWord())){
+            Rus parseRus = getRusById(rus.getId());
+            parseRus.setWord(rus.getWord());
+            rusDao.save(parseRus);
+        }
+        else System.err.println("Word [" + rus.getWord() + "] is exist. Don't update!");
     }
 
     @Override
@@ -80,31 +88,6 @@ public class RusServiceImpl implements RusService {
         }
     }
 
-//    @Override
-//    public void saveEngTranslation(Rus rus) {
-//        rus.setWord(rus.getWord().toLowerCase());
-//
-//        if (findIdByWord(rus.getWord()) == null) {
-//            Rus parseRus = new Rus();
-//            parseRus.setWord(rus.getWord());
-//            parseRus.addRusEng(rus.getTranslationWord());
-//            rusDao.save(parseRus);
-//        }
-//        else {
-//            Rus findingRus = rusDao.getOne(findIdByWord(rus.getWord()));
-//            List<String> allEngWordsByRusId = findAllEngWordsByRusId(rusDao.findIdByWord(rus.getWord()));
-//            if (!allEngWordsByRusId.contains(rus.getTranslationWord())){
-//                System.err.println("Not contain " + rus.getTranslationWord());
-//
-//                findingRus.addRusEng(rus.getTranslationWord());
-//
-//                System.err.println("Add to word [" + rus.getWord() + "] translation [" + rus.getTranslationWord() + "]");
-//                rusDao.save(findingRus);
-//            }
-//            else System.err.println("Not add " + rus.getTranslationWord() + " because translation exists");
-//        }
-//    }
-
     @Override
     public Long findIdByWord(String word) {
         return rusDao.findIdByWord(word);
@@ -113,9 +96,6 @@ public class RusServiceImpl implements RusService {
     @Override
     public List<String> findAllEngWordsByRusId(Long id) {
         List<String> allEngWordsByRusId = rusDao.findAllEngWordsByRusId(id);
-        //for (String s : allEngWordsByRusId)
-            //System.err.println(s);
         return allEngWordsByRusId;
     }
-
 }

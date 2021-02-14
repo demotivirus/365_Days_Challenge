@@ -1,4 +1,4 @@
-package com.demotivirus.Day_053_054.controller;
+package com.demotivirus.Day_053_055.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
