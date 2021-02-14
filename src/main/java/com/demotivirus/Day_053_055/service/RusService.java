@@ -9,11 +9,11 @@ public interface RusService {
     void saveWord(Rus rus);
     void updateWord(Rus rus);
     List<Rus> getAllWords();
-    Rus getRusById(Long id);
+    Rus getById(Long id);
     void deleteWord(Long id);
     //void saveEngTranslation(Rus rus, Eng eng);
     void saveEngTranslation(Rus rus);
     //Rus findByWord(String word);
     Long findIdByWord(String word);
-    List<String> findAllEngWordsByRusId(Long id);
+    List<String> findAllRusToEngTranslations(Long id);
 }

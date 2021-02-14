@@ -4,8 +4,10 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,12 +36,21 @@ public class Eng {
         this.word = word;
     }
 
-    @ManyToMany(mappedBy = "rusEng")
+    @ManyToMany(fetch = FetchType.EAGER,
+            cascade = {
+                    CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST
+            },
+            mappedBy = "rusEng")
     private List<Rus> engRus = new ArrayList<>();
 
-    public void addRusTranslation(Rus rus){
+    public void addRusTranslation(String word){
         //engRus.add(rus);
-        rus.getRusEng().add(this);
+        //rus.getRusEng().add(this);
+        engRus.add(new Rus(word));
+    }
+
+    public void addRusTranslation(Rus rus){
+        engRus.add(rus);
     }
 
     @Override

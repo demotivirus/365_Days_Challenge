@@ -57,7 +57,7 @@ public class RusController {
 
     @GetMapping("add-eng-translation/{id}")
     public ModelAndView showFormTranslation(@PathVariable("id") Long id, ModelAndView model) {
-        Rus rus = rusService.getRusById(id);
+        Rus rus = rusService.getById(id);
         model.addObject("form", rus);
         model.setViewName("add-individual-translation");
         return model;
@@ -73,7 +73,7 @@ public class RusController {
 
     @GetMapping("update/{id}")
     public String updateRusWordShowForm(@PathVariable("id") long id, Model model) {
-        model.addAttribute("words", rusService.getRusById(id));
+        model.addAttribute("words", rusService.getById(id));
         return "update-word";
     }
 

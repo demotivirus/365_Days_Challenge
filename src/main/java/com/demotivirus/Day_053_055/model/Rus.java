@@ -53,6 +53,10 @@ public class Rus {
         rusEng.add(new Eng(word));
     }
 
+    public void addRusEng(Eng eng){
+        rusEng.add(eng);
+    }
+
     @Override
     public String toString() {
         return "" + word;
