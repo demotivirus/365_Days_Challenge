@@ -3,7 +3,6 @@ package com.demotivirus.Day_053_055.service;
 import com.demotivirus.Day_024.error.NotFoundException;
 import com.demotivirus.Day_053_055.dao.EngDao;
 import com.demotivirus.Day_053_055.model.Eng;
-import com.demotivirus.Day_053_055.model.Rus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -54,8 +53,10 @@ public class EngServiceImpl implements EngService {
     }
 
     @Override
-    public void saveEngTranslation(Eng eng, Rus rus) {
-        eng.addRusTranslation(rus);
-        engDao.save(eng);
+    public Eng getById(Long id) {
+        Eng eng = engDao.findFirstById(id);
+        if (eng != null)
+            return engDao.getOne(id);
+        else throw new NotFoundException("Not found with id " + id);
     }
 }
