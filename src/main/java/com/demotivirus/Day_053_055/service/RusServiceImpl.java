@@ -1,8 +1,8 @@
-package com.demotivirus.Day_053_054.service;
+package com.demotivirus.Day_053_055.service;
 
 import com.demotivirus.Day_024.error.NotFoundException;
-import com.demotivirus.Day_053_054.dao.RusDao;
-import com.demotivirus.Day_053_054.model.Rus;
+import com.demotivirus.Day_053_055.dao.RusDao;
+import com.demotivirus.Day_053_055.model.Rus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

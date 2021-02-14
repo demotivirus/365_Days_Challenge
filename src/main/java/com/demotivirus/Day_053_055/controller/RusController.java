@@ -1,7 +1,7 @@
-package com.demotivirus.Day_053_054.controller;
+package com.demotivirus.Day_053_055.controller;
 
-import com.demotivirus.Day_053_054.model.Rus;
-import com.demotivirus.Day_053_054.service.RusService;
+import com.demotivirus.Day_053_055.model.Rus;
+import com.demotivirus.Day_053_055.service.RusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
