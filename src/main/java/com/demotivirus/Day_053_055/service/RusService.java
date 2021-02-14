@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface RusService {
     void saveWord(Rus rus);
-    Rus updateWord(Rus rus);
+    void updateWord(Rus rus);
     List<Rus> getAllWords();
     Rus getRusById(Long id);
     void deleteWord(Long id);

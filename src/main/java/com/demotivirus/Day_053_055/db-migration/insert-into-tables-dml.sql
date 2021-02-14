@@ -1,28 +1,40 @@
-insert into public.eng (word)
+insert into public.eng (word) --id1
 values ('him');
-insert into public.eng (word)
+insert into public.eng (word) --id2
 values ('which');
-insert into public.eng (word)
+insert into public.eng (word) --id3
 values ('universe');
-insert into public.eng (word)
+insert into public.eng (word) --id4
 values ('world');
-insert into public.eng (word)
+insert into public.eng (word) --id5
 values ('peace');
+insert into public.eng (word) --id6
+values ('shine');
+insert into public.eng (word) --id7
+values ('light');
 
 --------------------------------------------
 
-insert into public.rus (word)
+insert into public.rus (word) --id1
 values ('его');
-insert into public.rus (word)
+insert into public.rus (word) --id2
 values ('ему');
-insert into public.rus (word)
+insert into public.rus (word) --id3
 values ('какой');
-insert into public.rus (word)
+insert into public.rus (word) --id4
 values ('который');
-insert into public.rus (word)
+insert into public.rus (word) --id5
 values ('что');
-insert into public.rus (word)
+insert into public.rus (word) --id6
 values ('мир');
+insert into public.rus (word) --id7
+values ('свет');
+insert into public.rus (word) --id8
+values ('вселенная');
+insert into public.rus (word) --id9
+values ('покой');
+insert into public.rus (word) --id10
+values ('спокойствие');
 
 --------------------------------------------
 
@@ -38,10 +50,22 @@ insert into public.rus_eng (rus_id, eng_id)
 values (5, 2);
 insert into public.rus_eng (rus_id, eng_id)
 values (6, 3);
-insert into public.rus_eng (rus_id, eng_id)
-values (6, 4);
+-- insert into public.rus_eng (rus_id, eng_id)
+-- values (6, 4);
 insert into public.rus_eng (rus_id, eng_id)
 values (6, 5);
+insert into public.rus_eng (rus_id, eng_id)
+values (7, 4);
+insert into public.rus_eng (rus_id, eng_id)
+values (8, 4);
+insert into public.rus_eng (rus_id, eng_id)
+values (9, 5);
+insert into public.rus_eng (rus_id, eng_id)
+values (10, 5);
+insert into public.rus_eng (rus_id, eng_id)
+values (7, 6);
+insert into public.rus_eng (rus_id, eng_id)
+values (7, 7);
 
 --------------------------------------------
 

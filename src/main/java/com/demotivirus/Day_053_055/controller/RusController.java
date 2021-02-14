@@ -79,8 +79,6 @@ public class RusController {
 
     @PostMapping("update/{id}")
     public String updateRusWord(@PathVariable("id") long id, @ModelAttribute Rus rus) {
-//        Rus parseRus = rusService.getRusById(id);
-//        parseRus.setWord(rus.getWord());
         rusService.updateWord(rus);
         return "redirect:/rus/list";
     }
