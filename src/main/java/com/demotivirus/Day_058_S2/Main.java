@@ -8,5 +8,6 @@ public class Main {
         permissions.updateUserRole(anyUser, role);
         System.out.println(anyUser);
         System.out.println(permissions);
+
     }
 }
