@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Save word</title>
+    <link rel="stylesheet" href="..static/css/style.css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" href="..static/css/user-style.css" th:href="@{/css/user-style.css}"/>
+</head>
+<body>
+<div id="wrapper">
+    <div id="header">
+        <h2>Add translation</h2>
+    </div>
+</div>
+
+<div id="container">
+    <form th:action="@{../add-eng-translation/{id}(id=${form.id})}" th:object="${form}" method="post">
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label for="translationWord" class="col-form-label">Translation</label>
+                <input type="text" th:field="*{translationWord}" class="form-control" id="translationWord" placeholder="Translation">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 mt-5">
+                <input type="submit" class="btn btn-primary" value="Save">
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>
