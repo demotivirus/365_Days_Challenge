@@ -19,4 +19,6 @@ public interface RusDao extends JpaRepository<Rus, Long> {
     List<String> findAllEngWordsByRusId(Long id);
 
     Rus findFirstById(Long id);
+
+    Rus findFirstByWord(String word);
 }

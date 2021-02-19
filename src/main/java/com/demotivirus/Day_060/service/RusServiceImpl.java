@@ -1,7 +1,6 @@
 package com.demotivirus.Day_060.service;
 
 import com.demotivirus.Day_024.error.NotFoundException;
-import com.demotivirus.Day_060.dao.EngDao;
 import com.demotivirus.Day_060.dao.RusDao;
 import com.demotivirus.Day_060.model.Eng;
 import com.demotivirus.Day_060.model.Rus;
@@ -18,7 +17,7 @@ public class RusServiceImpl implements RusService {
     @Autowired
     private RusDao rusDao;
     @Autowired
-    private EngDao engDao;
+    private TranslationDispatcherImpl translationDispatcher;
 
     @Override
     public void saveWord(Rus rus) {
@@ -79,14 +78,14 @@ public class RusServiceImpl implements RusService {
             rusDao.save(parseRus);
         } else { //FOR FORM ON @GetMapping("add-eng-translation/{id}")
             Rus parseRus = getById(rus.getId());
-            List<String> allRusToEngTranslations = findAllRusToEngTranslations(rus.getId());
+            List<String> allRusToEngTranslations = translationDispatcher.findAllRusToEngTranslations(rus.getId());
             System.err.print("IN saveEngTranslation RUS ");
             if (!allRusToEngTranslations.contains(rus.getTranslationWord())) { //save only uniq words
 
-                Eng eng = engDao.findFirstByWord(rus.getTranslationWord());
+                Eng eng = translationDispatcher.findFirstEngByWord(rus.getTranslationWord());
                 if (eng != null) {
                     System.err.print("& IN saveEngTranslation ENG: ");
-                    List<String> allEngToRusTranslations = findAllEngToRusTranslations(eng.getId());
+                    List<String> allEngToRusTranslations = translationDispatcher.findAllEngToRusTranslations(eng.getId());
                     if (!allEngToRusTranslations.contains(parseRus.getWord())) { //save only uniq words
 
                         eng.addRusTranslation(parseRus); //save eng-rus
@@ -109,16 +108,5 @@ public class RusServiceImpl implements RusService {
     @Override
     public Long findIdByWord(String word) {
         return rusDao.findIdByWord(word);
-    }
-
-    @Override
-    public List<String> findAllRusToEngTranslations(Long id) {
-        List<String> allRusToEngTranslations = rusDao.findAllEngWordsByRusId(id);
-        return allRusToEngTranslations;
-    }
-
-    private List<String> findAllEngToRusTranslations(Long id) {
-        List<String> allEngToRusTranslations = engDao.findAllRusWordsByEngId(id);
-        return allEngToRusTranslations;
     }
 }

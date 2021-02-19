@@ -14,5 +14,5 @@ public interface RusService {
     void saveEngTranslation(Rus rus);
     //Rus findByWord(String word);
     Long findIdByWord(String word);
-    List<String> findAllRusToEngTranslations(Long id);
+    //List<String> findAllRusToEngTranslations(Long id);
 }
