@@ -39,7 +39,7 @@
                 <td><span th:text="${word.id}">Id</span></td>
                 <td><span th:text="${word.word}">Rus</span></td>
                 <td>
-                    <span th:text="${word.rusEng}">Eng</span>
+                    <span th:text="${word.englishWords}">Eng</span>
                     <a th:href="@{/rus/add-eng-translation/{id}(id=${word.id})}">+</a>
                 </td>
                 <td>
