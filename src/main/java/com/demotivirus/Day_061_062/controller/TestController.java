@@ -1,5 +1,6 @@
 package com.demotivirus.Day_061_062.controller;
 
+import com.demotivirus.Day_061_062.service.GlobalService;
 import com.demotivirus.Day_061_062.service.RussianService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TestController {
     @Autowired
     private RussianService russianService;
+    @Autowired
+    private GlobalService globalService;
 
     @GetMapping("list")
     public String findAllWords(Model model){

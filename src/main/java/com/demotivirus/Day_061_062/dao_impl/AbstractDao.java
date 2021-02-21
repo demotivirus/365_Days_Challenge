@@ -1,5 +1,4 @@
 package com.demotivirus.Day_061_062.dao_impl;
-
 import com.demotivirus.Day_061_062.dao_abstract.GenericDao;
 
 import javax.persistence.EntityManager;
@@ -19,5 +18,12 @@ public abstract class AbstractDao<T, ID> implements GenericDao<T, ID> {
 
     public List<T> findAll() {
         return entityManager.createQuery("FROM " + clazz.getName()).getResultList();
+    }
+
+    public T findFirstByWord(String word){
+        return entityManager
+                .createQuery("SELECT * FROM " + clazz.getName() + " where word = :word", clazz)
+                .setParameter("word", word)
+                .getSingleResult();
     }
 }

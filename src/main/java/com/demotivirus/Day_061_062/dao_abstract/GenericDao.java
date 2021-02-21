@@ -4,4 +4,5 @@ import java.util.List;
 
 public interface GenericDao<T, ID> {
     List<T> findAll();
+    T findFirstByWord(String word);
 }

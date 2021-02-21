@@ -10,11 +10,12 @@ import java.util.List;
 
 @Service
 @Transactional
-public class RussianServiceImpl implements RussianService{
+public class RussianServiceImpl extends AbstractService implements RussianService{
     private RussianDao russianDao;
 
     @Autowired
     public RussianServiceImpl(RussianDao russianDao) {
+        super();
         this.russianDao = russianDao;
     }
 

@@ -9,17 +9,22 @@
 <body>
 <div id="wrapper">
     <div id="header">
-        <h2>Add new word</h2>
+        <h2>Find word</h2>
     </div>
 </div>
 
 <div id="container">
-    <form th:action="@{save-word}" th:object="${word}" method="post">
+    <form th:action="@{find-first}" th:object="${form}" method="post">
         <table>
             <tr>
                 <td>Word:</td>
                 <td><input type="text" th:field="*{word}"/></td>
             </tr>
+
+<!--            <tr>-->
+<!--                <td>Word:</td>-->
+<!--                <td><input type="text" th:field="${form2.word}"/></td>-->
+<!--            </tr>-->
             <tr>
                 <td><button type="submit">Save</button></td>
             </tr>
