@@ -1,4 +1,4 @@
-package com.demotivirus.Day_061_Dictionary.dao_abstract;
+package com.demotivirus.Day_061_062.dao_abstract;
 
 import java.util.List;
 

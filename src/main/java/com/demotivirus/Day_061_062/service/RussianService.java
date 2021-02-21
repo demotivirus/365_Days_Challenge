@@ -1,6 +1,6 @@
-package com.demotivirus.Day_061_Dictionary.service;
+package com.demotivirus.Day_061_062.service;
 
-import com.demotivirus.Day_061_Dictionary.model.Russian;
+import com.demotivirus.Day_061_062.model.Russian;
 
 import java.util.List;
 

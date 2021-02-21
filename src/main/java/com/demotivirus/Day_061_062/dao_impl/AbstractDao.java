@@ -1,6 +1,6 @@
-package com.demotivirus.Day_061_Dictionary.dao_impl;
+package com.demotivirus.Day_061_062.dao_impl;
 
-import com.demotivirus.Day_061_Dictionary.dao_abstract.GenericDao;
+import com.demotivirus.Day_061_062.dao_abstract.GenericDao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

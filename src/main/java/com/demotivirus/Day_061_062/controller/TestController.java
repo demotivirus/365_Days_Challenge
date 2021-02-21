@@ -1,6 +1,6 @@
-package com.demotivirus.Day_061_Dictionary.controller;
+package com.demotivirus.Day_061_062.controller;
 
-import com.demotivirus.Day_061_Dictionary.service.RussianService;
+import com.demotivirus.Day_061_062.service.RussianService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
