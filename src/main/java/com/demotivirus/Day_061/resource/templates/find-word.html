@@ -9,21 +9,16 @@
 <body>
 <div id="wrapper">
     <div id="header">
-        <h2>Add translation</h2>
+        <h2>Find word</h2>
     </div>
 </div>
 
 <div id="container">
-    <form th:action="@{save-translation}" th:object="${form}" method="post">
+    <form th:action="@{find-first}" th:object="${form}" method="post">
         <table>
             <tr>
                 <td>Word:</td>
                 <td><input type="text" th:field="*{word}"/></td>
-            </tr>
-
-            <tr>
-                <td>Word:</td>
-                <td><input type="text" th:field="*{translationWord}"/></td>
             </tr>
 
 <!--            <tr>-->
