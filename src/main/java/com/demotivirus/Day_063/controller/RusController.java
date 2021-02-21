@@ -1,7 +1,7 @@
-package com.demotivirus.Day_053_055.controller;
+package com.demotivirus.Day_063.controller;
 
-import com.demotivirus.Day_053_055.model.Eng;
-import com.demotivirus.Day_053_055.service.EngService;
+import com.demotivirus.Day_063.model.Russian;
+import com.demotivirus.Day_063.service.TranslationDispatcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,26 +11,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("eng")
-public class EngController {
+@RequestMapping("rus/")
+public class RusController {
     @Autowired
-    private EngService engService;
+    private TranslationDispatcher dispatcher;
 
-    @GetMapping("list")
+    @GetMapping(path = {"", "list"})
     public String listWords(Model model){
-        model.addAttribute("words", engService.getAllWords());
-        return "eng-list";
+        model.addAttribute("words", dispatcher.findAll("russian"));
+        return "rus-list";
     }
+
+///////////////////////////
 
     @GetMapping("add-word")
     public String showFormAdd(Model model){
-        model.addAttribute("word", new Eng());
+        model.addAttribute("word", new Russian());
         return "add-word";
     }
 
     @PostMapping("save-word")
-    public String saveWord(@ModelAttribute("eng") Eng eng){
-        engService.saveWord(eng);
-        return "redirect:/eng/list";
+    public String saveWord(@ModelAttribute("rus") Russian russian){
+        dispatcher.save("russian", russian);
+        return "redirect:/rus/list";
     }
 }
