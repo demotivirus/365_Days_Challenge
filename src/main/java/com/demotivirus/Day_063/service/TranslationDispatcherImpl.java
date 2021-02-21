@@ -41,9 +41,9 @@ public class TranslationDispatcherImpl implements TranslationDispatcher {
                     russianDao.save(russian);
                     break;
                 case "english":
-
                     English english = (English) abstractLanguage;
                     englishDao.save(english);
+                    break;
             }
         }
     }
