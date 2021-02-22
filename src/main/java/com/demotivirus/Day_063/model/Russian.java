@@ -13,6 +13,7 @@ import java.util.List;
 @Entity
 @Table(name = "russian")
 public class Russian extends AbstractLanguage {
+    //====================WORDS=======================
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {
                     CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST
@@ -26,5 +27,22 @@ public class Russian extends AbstractLanguage {
 
     public void addEnglishWord(English english){
         englishWords.add(english);
+    }
+
+    //=================PHRASES========================
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST
+            })
+    @JoinTable(
+            name = "russian_phrases_relationship",
+            joinColumns = @JoinColumn(name = "russian_id"),
+            inverseJoinColumns = @JoinColumn(name = "phrase_id")
+    )
+    public List<RussianPhrase> russianPhrases = new ArrayList<>();
+
+    public void addRussianPhrase(RussianPhrase russianPhrase){
+        russianPhrases.add(russianPhrase);
     }
 }
