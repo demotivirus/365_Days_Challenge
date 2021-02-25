@@ -1,5 +1,7 @@
 package com.demotivirus.Day_065_066.model;
 
+import lombok.NoArgsConstructor;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,10 +12,16 @@ import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@Entity @NoArgsConstructor
 @Table(name = "english")
 public class English extends AbstractLanguage {
+
+    public English(String word) {
+        super(word);
+    }
+
     //====================WORDS=======================
+
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {
                     CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST
@@ -23,6 +31,30 @@ public class English extends AbstractLanguage {
 
     public void addRussianWord(Russian russian){
         russianWords.add(russian);
+    }
+
+    public void addRussianWord(String word){
+        russianWords.add(new Russian(word));
+    }
+
+    //CHINESE
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST
+            })
+    @JoinTable(
+            name = "english_chinese",
+            joinColumns = @JoinColumn(name = "english_id"),
+            inverseJoinColumns = @JoinColumn(name = "chinese_id")
+    )
+    public List<Chinese> chineseWords = new ArrayList<>();
+
+    public void addChineseWord(Chinese chinese){
+        chineseWords.add(chinese);
+    }
+    public void addChineseWord(String word){
+        chineseWords.add(new Chinese(word));
     }
 
     //=================PHRASES========================

@@ -1,6 +1,9 @@
 package com.demotivirus.Day_065_066.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -9,13 +12,15 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 
-@Data
+@Data @NoArgsConstructor
+@RequiredArgsConstructor
 @MappedSuperclass
 public abstract class AbstractLanguage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NonNull
     @Column(name = "word")
     private String word;
 
@@ -26,4 +31,6 @@ public abstract class AbstractLanguage {
     public String toString() {
         return "" + word;
     }
+
+
 }

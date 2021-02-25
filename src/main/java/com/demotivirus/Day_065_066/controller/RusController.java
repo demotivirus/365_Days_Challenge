@@ -39,7 +39,7 @@ public class RusController {
 
 ///////////////////////////////
 
-    @GetMapping("add-eng-translation")
+    @GetMapping("add-translation")
     public ModelAndView showFormTranslation(ModelAndView model) {
         model.addObject("form", new Russian());
         model.setViewName("add-word-translation");
@@ -48,7 +48,7 @@ public class RusController {
 
     @PostMapping("save-translation")
     public String saveEngTranslation(@ModelAttribute("rus") Russian russian){
-        dispatcher.saveTranslation("russian", russian, "english");
+        dispatcher.saveTranslation(russian, "english");
         return "redirect:/rus/list";
     }
 

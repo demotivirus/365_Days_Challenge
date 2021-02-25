@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("eng")
@@ -35,4 +36,21 @@ public class EngController {
         dispatcher.save("english", english);
         return "redirect:/eng/list";
     }
+
+////////////////////////////
+
+    @GetMapping("add-translation")
+    public ModelAndView showFormTranslation(ModelAndView model) {
+        model.addObject("form", new English());
+        model.setViewName("add-word-translation");
+        return model;
+    }
+
+    @PostMapping("save-translation")
+    public String saveEngTranslation(@ModelAttribute("eng") English english){
+        dispatcher.saveTranslation(english, "russian");
+        return "redirect:/eng/list";
+    }
+
+////////////////////////////
 }
