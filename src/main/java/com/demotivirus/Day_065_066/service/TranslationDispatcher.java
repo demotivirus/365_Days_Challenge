@@ -1,6 +1,6 @@
-package com.demotivirus.Day_065.service;
+package com.demotivirus.Day_065_066.service;
 
-import com.demotivirus.Day_065.model.AbstractLanguage;
+import com.demotivirus.Day_065_066.model.AbstractLanguage;
 
 import java.util.List;
 

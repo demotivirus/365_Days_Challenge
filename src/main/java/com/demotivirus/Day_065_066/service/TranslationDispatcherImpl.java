@@ -1,9 +1,9 @@
-package com.demotivirus.Day_065.service;
+package com.demotivirus.Day_065_066.service;
 
-import com.demotivirus.Day_065.dao_abstract.EnglishDao;
-import com.demotivirus.Day_065.dao_abstract.RussianDao;
-import com.demotivirus.Day_065.model.AbstractLanguage;
-import com.demotivirus.Day_065.model.English;
+import com.demotivirus.Day_065_066.dao_abstract.EnglishDao;
+import com.demotivirus.Day_065_066.dao_abstract.RussianDao;
+import com.demotivirus.Day_065_066.model.AbstractLanguage;
+import com.demotivirus.Day_065_066.model.English;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,7 +36,7 @@ public class TranslationDispatcherImpl implements TranslationDispatcher {
         if (checkUniqueByWord(langName, abstractLanguage.getWord())) {
             switch (langName.toLowerCase()) {
                 case "russian":
-                    com.demotivirus.Day_065.model.Russian russian = (com.demotivirus.Day_065.model.Russian) abstractLanguage;
+                    com.demotivirus.Day_065_066.model.Russian russian = (com.demotivirus.Day_065_066.model.Russian) abstractLanguage;
                     russianDao.save(russian);
                     break;
                 case "english":

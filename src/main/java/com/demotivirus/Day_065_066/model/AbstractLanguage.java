@@ -1,4 +1,4 @@
-package com.demotivirus.Day_065.model;
+package com.demotivirus.Day_065_066.model;
 
 import lombok.Data;
 
@@ -11,19 +11,19 @@ import javax.persistence.Transient;
 
 @Data
 @MappedSuperclass
-public abstract class AbstractPhrase {
+public abstract class AbstractLanguage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "phrase")
-    private String phrase;
+    @Column(name = "word")
+    private String word;
 
     @Transient
-    private String phraseTranslation;
+    private String translationWord;
 
     @Override
     public String toString() {
-        return "" + phrase;
+        return "" + word;
     }
 }
