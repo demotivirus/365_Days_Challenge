@@ -1,4 +1,4 @@
-package com.demotivirus.Day_065_066.model;
+package com.demotivirus.Day_065_067.model;
 
 import lombok.Data;
 
@@ -11,17 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity @Data
-@Table(name = "english_phrases")
-public class EnglishPhrase extends AbstractPhrase {
+@Table(name = "russian_phrases")
+public class RussianPhrase extends AbstractPhrase {
     //====================WORDS=======================
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {
                     CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST
             },
-            mappedBy = "englishPhrases")
-    public List<English> englishWords = new ArrayList<>();
+            mappedBy = "russianPhrases")
+    public List<Russian> russianWords = new ArrayList<>();
 
-    public void addEnglishWord(English english){
-        englishWords.add(english);
+    public void addRussianWords(Russian russian){
+        russianWords.add(russian);
     }
 }

@@ -1,6 +1,6 @@
-package com.demotivirus.Day_065_066.controller;
+package com.demotivirus.Day_065_067.controller;
 
-import com.demotivirus.Day_065_066.service.TranslationDispatcher;
+import com.demotivirus.Day_065_067.service.TranslationDispatcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
