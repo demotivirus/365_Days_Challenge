@@ -76,10 +76,19 @@ public class TranslationDispatcherImpl implements TranslationDispatcher {
             leadClass.setTranslationWord(leadClass.getTranslationWord().toLowerCase());
         }
 
-        if (leadClass.getClass() == Russian.class){
+        if (leadClass.getClass() == null) {
+            saveTranslationIfWordIsUniq(leadClass, translationLangName);
+        } else {
+            saveTranslationIfWordIsNonUniq(leadClass, translationLangName);
+        }
+
+    }
+
+    private void saveTranslationIfWordIsUniq(AbstractLanguage leadClass, String translationLangName) {
+        if (leadClass.getClass() == Russian.class) {
             Russian russian = new Russian();
             russian.setWord(leadClass.getWord());
-            switch (translationLangName){
+            switch (translationLangName) {
                 case "english":
                     russian.addEnglishWord(leadClass.getTranslationWord());
                     break;
@@ -91,10 +100,10 @@ public class TranslationDispatcherImpl implements TranslationDispatcher {
             russianDao.save(russian);
         }
 
-        if (leadClass.getClass() == English.class){
+        if (leadClass.getClass() == English.class) {
             English english = new English();
             english.setWord(leadClass.getWord());
-            switch (translationLangName){
+            switch (translationLangName) {
                 case "russian":
                     english.addRussianWord(leadClass.getTranslationWord());
                     break;
@@ -106,10 +115,10 @@ public class TranslationDispatcherImpl implements TranslationDispatcher {
             englishDao.save(english);
         }
 
-        if (leadClass.getClass() == Chinese.class){
+        if (leadClass.getClass() == Chinese.class) {
             Chinese chinese = new Chinese();
             chinese.setWord(leadClass.getWord());
-            switch (translationLangName){
+            switch (translationLangName) {
                 case "russian":
                     chinese.addRussianWord(leadClass.getTranslationWord());
                     break;
@@ -122,9 +131,37 @@ public class TranslationDispatcherImpl implements TranslationDispatcher {
         }
     }
 
+    private void saveTranslationIfWordIsNonUniq(AbstractLanguage leadClass, String translationLangName) {
+        if (leadClass.getClass() == Russian.class) {
+            Russian russian = russianDao.findFirstByWord(leadClass.getWord());
+            switch (translationLangName) {
+                case "english":
+                    List<String> englishWords =
+                            russianDao.findAllWordsById_ForManyToMany("russian", russian.getId(), translationLangName);
+                    if (!englishWords.contains(russian.getTranslationWord())) { //save only uniq words
+                        English english = englishDao.findFirstByWord(leadClass.getTranslationWord());
+                        if (english != null) {
+                            List<String> russianWords =
+                                    englishDao.findAllWordsById_ForManyToMany("russian", english.getId(), translationLangName);
+                            if (!russianWords.contains(russian.getWord())) { //save only uniq words
+                                english.addRussianWord(russian); //save eng-rus
+                                russian.addEnglishWord(english); //save rus-eng
+                                russianDao.save(russian); //SAVE ALL
+                            }
+                        } //if ENG word not exist
+                        else {
+                            russian.addEnglishWord(leadClass.getTranslationWord());
+                            russianDao.save(russian);
+                        }
+                    }
+                    break;
+                case "chinese":
+                    // TO DO
+                    break;
+            }
 
-    public void saveTranslationById() {
-        //TO DO
+            russianDao.save(russian);
+        }
     }
 
     @Override

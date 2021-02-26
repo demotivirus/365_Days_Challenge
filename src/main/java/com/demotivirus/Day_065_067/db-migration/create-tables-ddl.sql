@@ -24,7 +24,7 @@ CREATE TABLE russian_english
     english_id bigint not null
 );
 
-DROP TABLE IF EXISTS english_phrases;
+DROP TABLE IF EXISTS english_phrases CASCADE ;
 
 CREATE TABLE english_phrases
 (
