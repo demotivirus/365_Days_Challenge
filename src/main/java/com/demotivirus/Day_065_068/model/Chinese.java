@@ -1,4 +1,4 @@
-package com.demotivirus.Day_065_067.model;
+package com.demotivirus.Day_065_068.model;
 
 import lombok.NoArgsConstructor;
 import lombok.NonNull;

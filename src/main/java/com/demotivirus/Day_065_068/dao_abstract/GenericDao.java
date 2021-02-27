@@ -1,6 +1,6 @@
-package com.demotivirus.Day_065_067.dao_abstract;
+package com.demotivirus.Day_065_068.dao_abstract;
 
-import com.demotivirus.Day_065_067.model.AbstractLanguage;
+import com.demotivirus.Day_065_068.model.AbstractLanguage;
 
 import java.util.List;
 
