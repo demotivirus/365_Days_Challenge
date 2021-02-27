@@ -1,7 +1,7 @@
-package com.demotivirus.Day_065_067.dao_impl;
+package com.demotivirus.Day_065_068.dao_impl;
 
-import com.demotivirus.Day_065_067.dao_abstract.GenericDao;
-import com.demotivirus.Day_065_067.model.AbstractLanguage;
+import com.demotivirus.Day_065_068.dao_abstract.GenericDao;
+import com.demotivirus.Day_065_068.model.AbstractLanguage;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

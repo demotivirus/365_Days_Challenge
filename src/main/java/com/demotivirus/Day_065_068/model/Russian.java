@@ -1,6 +1,7 @@
-package com.demotivirus.Day_065_067.model;
+package com.demotivirus.Day_065_068.model;
 
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -13,28 +14,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity @NoArgsConstructor
-@Table(name = "english")
-public class English extends AbstractLanguage {
+@Table(name = "russian")
+public class Russian extends AbstractLanguage {
 
-    public English(String word) {
+    public Russian(@NonNull String word) {
         super(word);
     }
 
     //====================WORDS=======================
-
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {
                     CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST
-            },
-            mappedBy = "englishWords")
-    public List<Russian> russianWords = new ArrayList<>();
+            })
+    @JoinTable(
+            name = "russian_english",
+            joinColumns = @JoinColumn(name = "russian_id"),
+            inverseJoinColumns = @JoinColumn(name = "english_id")
+    )
+    public List<English> englishWords = new ArrayList<>();
 
-    public void addRussianWord(Russian russian){
-        russianWords.add(russian);
+    public void addEnglishWord(English english){
+        englishWords.add(english);
     }
-
-    public void addRussianWord(String word){
-        russianWords.add(new Russian(word));
+    public void addEnglishWord(String word){
+        englishWords.add(new English(word));
     }
 
     //CHINESE
@@ -44,8 +47,8 @@ public class English extends AbstractLanguage {
                     CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST
             })
     @JoinTable(
-            name = "english_chinese",
-            joinColumns = @JoinColumn(name = "english_id"),
+            name = "russian_chinese",
+            joinColumns = @JoinColumn(name = "russian_id"),
             inverseJoinColumns = @JoinColumn(name = "chinese_id")
     )
     public List<Chinese> chineseWords = new ArrayList<>();
@@ -64,13 +67,13 @@ public class English extends AbstractLanguage {
                     CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST
             })
     @JoinTable(
-            name = "english_phrases_relationship",
-            joinColumns = @JoinColumn(name = "english_id"),
+            name = "russian_phrases_relationship",
+            joinColumns = @JoinColumn(name = "russian_id"),
             inverseJoinColumns = @JoinColumn(name = "phrase_id")
     )
-    public List<EnglishPhrase> englishPhrases = new ArrayList<>();
+    public List<RussianPhrase> russianPhrases = new ArrayList<>();
 
-    public void addEnglishPhrase(EnglishPhrase englishPhrase){
-        englishPhrases.add(englishPhrase);
+    public void addRussianPhrase(RussianPhrase russianPhrase){
+        russianPhrases.add(russianPhrase);
     }
 }
