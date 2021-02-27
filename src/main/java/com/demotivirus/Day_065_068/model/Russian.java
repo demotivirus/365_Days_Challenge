@@ -21,6 +21,10 @@ public class Russian extends AbstractLanguage {
         super(word);
     }
 
+    public Russian(@NonNull Long id) {
+        super(id);
+    }
+
     //====================WORDS=======================
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {

@@ -14,7 +14,7 @@
 </div>
 
 <div id="container">
-    <form th:action="@{../add-eng-translation/{id}(id=${form.id})}" th:object="${form}" method="post">
+    <form th:action="@{../save-translation/{id}(id=${form.id})}" th:object="${form}" method="post">
         <div class="row">
             <div class="form-group col-md-6">
                 <label for="translationWord" class="col-form-label">Translation</label>

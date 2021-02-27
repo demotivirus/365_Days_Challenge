@@ -9,6 +9,7 @@ public interface GenericDao<T, ID> {
     void save(T t);
     boolean checkUniqueByWord(String word);
     T findFirstByWord(String word);
+    T findById(ID id);
     void saveTranslation(AbstractLanguage language);
     List<String> findAllWordsById_ForManyToMany(String leadLangName, Long id, String translationClassName);
 }

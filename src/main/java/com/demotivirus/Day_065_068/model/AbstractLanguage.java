@@ -33,4 +33,7 @@ public abstract class AbstractLanguage {
     }
 
 
+    public AbstractLanguage(Long id) {
+        this.id = id;
+    }
 }

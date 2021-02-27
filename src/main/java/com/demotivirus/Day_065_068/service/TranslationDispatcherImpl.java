@@ -162,6 +162,38 @@ public class TranslationDispatcherImpl implements TranslationDispatcher {
 
             russianDao.save(russian);
         }
+
+        //BUG HERE
+        if (leadClass.getClass() == English.class) {
+            English english = englishDao.findFirstByWord(leadClass.getWord());
+            switch (translationLangName) {
+                case "russian":
+                    List<String> russianWords =
+                            englishDao.findAllWordsById_ForManyToMany("russian", english.getId(), "english");
+                    if (!russianWords.contains(english.getTranslationWord())) { //save only uniq words
+                        Russian russian = russianDao.findFirstByWord(leadClass.getTranslationWord());
+                        if (russian != null) {
+                            List<String> englishWords =
+                                    russianDao.findAllWordsById_ForManyToMany("russian", russian.getId(), "english");
+                            if (!englishWords.contains(russian.getWord())) { //save only uniq words
+                                russian.addEnglishWord(english); //save rus-eng
+                                english.addRussianWord(russian); //save eng-rus
+                                englishDao.save(english); //SAVE ALL
+                            }
+                        } //if ENG word not exist
+                        else {
+                            english.addRussianWord(leadClass.getTranslationWord());
+                            englishDao.save(english);
+                        }
+                    }
+                    break;
+                case "chinese":
+                    // TO DO
+                    break;
+            }
+
+            englishDao.save(english);
+        }
     }
 
     @Override
@@ -171,6 +203,23 @@ public class TranslationDispatcherImpl implements TranslationDispatcher {
                 return russianDao.findFirstByWord(word);
             case "english":
                 return englishDao.findFirstByWord(word);
+            case "chinese":
+                return chineseDao.findFirstByWord(word);
+            default:
+                return null;
+        }
+    }
+
+    @Override
+    public AbstractLanguage findById(String langName, Long id) {
+        switch (langName.toLowerCase()) {
+            case "russian":
+                Russian russian = russianDao.findById(id);
+                return russian;
+            case "english":
+                return englishDao.findById(id);
+            case "chinese":
+                return chineseDao.findById(id);
             default:
                 return null;
         }

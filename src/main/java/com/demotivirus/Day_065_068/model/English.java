@@ -20,6 +20,10 @@ public class English extends AbstractLanguage {
         super(word);
     }
 
+    public English(Long id) {
+        super(id);
+    }
+
     //====================WORDS=======================
 
     @ManyToMany(fetch = FetchType.LAZY,
