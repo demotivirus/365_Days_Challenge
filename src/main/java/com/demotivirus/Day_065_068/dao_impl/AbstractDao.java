@@ -34,6 +34,11 @@ public abstract class AbstractDao<T, ID> implements GenericDao<T, ID> {
         else return null;
     }
 
+    @Override
+    public T findById(ID id){
+        return entityManager.find(clazz, id);
+    }
+
     public boolean checkUniqueByWord(String word) {
         Long values = entityManager
                 .createQuery("SELECT COUNT(word) FROM " + clazz.getName() + " WHERE word = :word", Long.class)
@@ -41,7 +46,8 @@ public abstract class AbstractDao<T, ID> implements GenericDao<T, ID> {
                 .getSingleResult();
         return values < 1;
     }
-    
+
+    //NEED REWORK
     public List<String> findAllWordsById_ForManyToMany(String leadLangName, Long id, String translationClassName) {
         StringBuilder sb =
                 new StringBuilder("SELECT tr.word FROM ")

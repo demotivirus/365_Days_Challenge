@@ -10,4 +10,5 @@ public interface TranslationDispatcher {
     boolean checkUniqueByWord(String langName, String word);
     void saveTranslation(AbstractLanguage leadClass, String translationLangName);
     AbstractLanguage findFirstByWord(String langName,String word);
+    AbstractLanguage findById(String langName, Long id);
 }

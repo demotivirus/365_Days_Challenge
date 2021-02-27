@@ -36,8 +36,11 @@
 
             <tr th:each="word : ${words}">
                 <td><span th:text="${word.id}">Id</span></td>
-                <td><span th:text="${word.word}">Eng</span></td>
-                <td><span th:text="${word.russianWords}">Rus</span></td>
+                <td><span th:text="${word.word}">English</span></td>
+                <td>
+                    <span th:text="${word.russianWords}">Russian</span>
+                    <a th:href="@{/eng/add-translation/{id}(id=${word.id})}">+</a>
+                </td>
                 <td>
                     <a th:href="@{/eng/update/{id}(id=${word.id})}">Edit</a>
                     |

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -53,4 +54,19 @@ public class EngController {
     }
 
 ////////////////////////////
+
+    @GetMapping("add-translation/{id}")
+    public ModelAndView showFormTranslation(@PathVariable("id") Long id, ModelAndView model) {
+        model.addObject("form", new English(id));
+        model.setViewName("add-word-translation-by-id");
+        return model;
+    }
+
+    @PostMapping("save-translation/{id}")
+    public String saveEngTranslationIndividual(@PathVariable("id") long id, @ModelAttribute("eng") English english){
+        English parseEng = (English) dispatcher.findById("english", id);
+        parseEng.setTranslationWord(english.getTranslationWord());
+        dispatcher.saveTranslation(parseEng, "russian");
+        return "redirect:/eng/list";
+    }
 }
