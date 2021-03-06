@@ -78,7 +78,6 @@ public class TranslationDispatcherImpl implements TranslationDispatcher {
         } else {
             saveTranslationIfWordIsNonUniq(leadClass, translationLangName);
         }
-
     }
 
     private void saveTranslationIfWordIsUniq(AbstractLanguage leadClass, String translationLangName) {
@@ -128,18 +127,19 @@ public class TranslationDispatcherImpl implements TranslationDispatcher {
         }
     }
 
-    private void saveTranslationIfWordIsNonUniq(AbstractLanguage leadClass, String translationLangName) {
+    @Transactional
+    void saveTranslationIfWordIsNonUniq(AbstractLanguage leadClass, String translationLangName) {
         if (leadClass.getClass() == Russian.class) {
             Russian russian = russianDao.findFirstByWord(leadClass.getWord());
             switch (translationLangName) {
                 case "english":
                     List<String> englishWords =
-                            russianDao.findAllWordsById_ForManyToMany("russian", russian.getId(), translationLangName);
-                    if (!englishWords.contains(russian.getTranslationWord())) { //save only uniq words
+                            russianDao.findAllWordsById_ForManyToManyLeft("russian", russian.getId(), translationLangName);
+                    if (!englishWords.contains(leadClass.getTranslationWord())) { //save only uniq words
                         English english = englishDao.findFirstByWord(leadClass.getTranslationWord());
                         if (english != null) {
                             List<String> russianWords =
-                                    englishDao.findAllWordsById_ForManyToMany("russian", english.getId(), translationLangName);
+                                    englishDao.findAllWordsById_ForManyToManyLeft("russian", english.getId(), translationLangName);
                             if (!russianWords.contains(russian.getWord())) { //save only uniq words
                                 english.addRussianWord(russian); //save eng-rus
                                 russian.addEnglishWord(english); //save rus-eng
@@ -157,7 +157,7 @@ public class TranslationDispatcherImpl implements TranslationDispatcher {
                     break;
             }
 
-            russianDao.save(russian);
+            //russianDao.save(russian);
         }
 
         //BUG HERE
@@ -166,21 +166,23 @@ public class TranslationDispatcherImpl implements TranslationDispatcher {
             switch (translationLangName) {
                 case "russian":
                     List<String> russianWords =
-                            englishDao.findAllWordsById_ForManyToMany("russian", english.getId(), "english");
+                            englishDao.findAllWordsById_ForManyToManyRight("russian", english.getId(), "english");
                     if (!russianWords.contains(english.getTranslationWord())) { //save only uniq words
                         Russian russian = russianDao.findFirstByWord(leadClass.getTranslationWord());
                         if (russian != null) {
                             List<String> englishWords =
-                                    russianDao.findAllWordsById_ForManyToMany("russian", russian.getId(), "english");
+                                    russianDao.findAllWordsById_ForManyToManyRight("russian", russian.getId(), "english");
                             if (!englishWords.contains(russian.getWord())) { //save only uniq words
                                 russian.addEnglishWord(english); //save rus-eng
                                 english.addRussianWord(russian); //save eng-rus
                                 englishDao.save(english); //SAVE ALL
                             }
-                        } //if ENG word not exist
+                        } //if RUS word not exist
                         else {
-                            english.addRussianWord(leadClass.getTranslationWord());
-                            englishDao.save(english);
+                            //FIX BUG FOR SAVE - save from over class because in this class not work reflection
+                            Russian parserRus = new Russian(leadClass.getTranslationWord());
+                            parserRus.addEnglishWord(english);
+                            russianDao.save(parserRus);
                         }
                     }
                     break;
@@ -189,7 +191,7 @@ public class TranslationDispatcherImpl implements TranslationDispatcher {
                     break;
             }
 
-            englishDao.save(english);
+            //englishDao.save(english);
         }
     }
 

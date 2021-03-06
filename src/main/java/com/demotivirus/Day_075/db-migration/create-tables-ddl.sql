@@ -28,9 +28,19 @@ DROP TABLE IF EXISTS english_phrases CASCADE;
 
 CREATE TABLE english_phrases
 (
-    english_id bigint       not null,
-    phrase     varchar(512) not null
+    id     bigserial    not null
+        constraint english_phrases_id primary key,
+    phrase varchar(512) unique not null
 );
+
+DROP TABLE IF EXISTS public.english_phrases_relationship CASCADE;
+
+CREATE TABLE english_phrases_relationship
+(
+    english_id bigint not null,
+    phrase_id  bigint not null
+);
+---------WORDS-----------
 
 CREATE UNIQUE INDEX russian_english_index ON russian_english (russian_id, english_id);
 
@@ -41,7 +51,14 @@ alter table russian_english
 alter table russian_english
     add constraint russian_english_eng_id_fk foreign key (english_id) references english;
 
---------------------
+---------PHRASES-----------
 
-alter table english_phrases
-    add constraint english_phrases_eng_id_fk foreign key (english_id) references english;
+CREATE UNIQUE INDEX english_phrases_relationship_index ON english_phrases_relationship (english_id, phrase_id);
+
+alter table english_phrases_relationship
+    add constraint english_phrases_relationship_english_id_fk
+        foreign key (english_id) references english;
+
+alter table english_phrases_relationship
+    add constraint english_phrases_relationship_phrase_id_fk
+        foreign key (phrase_id) references english_phrases;

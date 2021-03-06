@@ -1,9 +1,10 @@
 package com.demotivirus.Day_075.model;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -12,7 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 
-@Data @NoArgsConstructor
+@Getter @Setter
+@NoArgsConstructor
 @RequiredArgsConstructor
 @MappedSuperclass
 public abstract class AbstractLanguage {

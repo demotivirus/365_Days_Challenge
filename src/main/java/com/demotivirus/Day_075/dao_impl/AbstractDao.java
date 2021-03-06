@@ -48,7 +48,7 @@ public abstract class AbstractDao<T, ID> implements GenericDao<T, ID> {
     }
 
     //NEED REWORK
-    public List<String> findAllWordsById_ForManyToMany(String leadLangName, Long id, String translationClassName) {
+    public List<String> findAllWordsById_ForManyToManyLeft(String leadLangName, Long id, String translationClassName) {
         StringBuilder sb =
                 new StringBuilder("SELECT tr.word FROM ")
                         .append(leadLangName)
@@ -67,9 +67,28 @@ public abstract class AbstractDao<T, ID> implements GenericDao<T, ID> {
         return entityManager.createNativeQuery(sb.toString()).setParameter("id", id).getResultList();
     }
 
+    public List<String> findAllWordsById_ForManyToManyRight(String leadLangName, Long id, String translationClassName) {
+        StringBuilder sb =
+                new StringBuilder("SELECT tr.word FROM ")
+                        .append(leadLangName)
+                        .append("_")
+                        .append(translationClassName)
+                        .append(" as m2m ")
+                        .append("LEFT JOIN ")
+                        .append(leadLangName)
+                        .append(" as tr ")
+                        .append("ON tr.id = m2m.")
+                        .append(leadLangName)
+                        .append("_id ")
+                        .append("WHERE m2m.")
+                        .append(translationClassName)
+                        .append("_id = :id");
+        return entityManager.createNativeQuery(sb.toString()).setParameter("id", id).getResultList();
+    }
+
     @Override
     public void save(T t) {
-        entityManager.merge(t);
+        entityManager.persist(t);
     }
 
     public void saveTranslation(AbstractLanguage language) {

@@ -1,6 +1,10 @@
 package com.demotivirus.Day_075.model;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,15 +15,17 @@ import javax.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
 @Entity @NoArgsConstructor
 @Table(name = "english")
 public class English extends AbstractLanguage {
 
-    public English(String word) {
+    public English(@NonNull String word) {
         super(word);
     }
 
-    public English(Long id) {
+    public English(@NonNull Long id) {
         super(id);
     }
 
@@ -30,7 +36,7 @@ public class English extends AbstractLanguage {
                     CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST
             },
             mappedBy = "englishWords")
-    public List<Russian> russianWords = new ArrayList<>();
+    private List<Russian> russianWords = new ArrayList<>();
 
     public void addRussianWord(Russian russian){
         russianWords.add(russian);
