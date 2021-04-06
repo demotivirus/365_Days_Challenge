@@ -1,5 +1,6 @@
 package com.demotivirus.Day_103;
 
+import com.demotivirus.Day_103.error.AwesomeException;
 import com.demotivirus.Day_103.error.MainException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("{id}")
-    public User getById(@PathVariable(name = "id") int id){
+    public User getById(@PathVariable(name = "id") int id) {
         User user = userService.getById(id);
         if (user == null)
             throw new MainException();
