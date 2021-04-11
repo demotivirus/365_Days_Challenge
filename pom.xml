@@ -124,6 +124,13 @@
 			<artifactId>javaee-api</artifactId>
 			<version>7.0</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.axis2/axis2-java2wsdl -->
+		<dependency>
+			<groupId>org.apache.axis2</groupId>
+			<artifactId>axis2-java2wsdl</artifactId>
+			<version>1.7.9</version>
+		</dependency>
 	</dependencies>
 
 	<build>

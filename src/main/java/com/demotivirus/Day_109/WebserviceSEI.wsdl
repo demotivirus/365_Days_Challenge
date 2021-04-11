@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://Day_109.demotivirus.com" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax21="http://Day_109.demotivirus.com/xsd" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" targetNamespace="http://Day_109.demotivirus.com">
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://Day_109.demotivirus.com/xsd">
+            <xs:complexType name="Goods">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="id" type="xs:int"/>
+                    <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax22="http://Day_109.demotivirus.com/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://Day_109.demotivirus.com">
+            <xs:import namespace="http://Day_109.demotivirus.com/xsd"/>
+            <xs:element name="testService">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="testServiceResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="sayHelloTo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="args0" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="sayHelloToResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getGoods">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getGoodsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax22:Goods"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="sayHelloToRequest">
+        <wsdl:part name="parameters" element="ns:sayHelloTo"/>
+    </wsdl:message>
+    <wsdl:message name="sayHelloToResponse">
+        <wsdl:part name="parameters" element="ns:sayHelloToResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getGoodsRequest">
+        <wsdl:part name="parameters" element="ns:getGoods"/>
+    </wsdl:message>
+    <wsdl:message name="getGoodsResponse">
+        <wsdl:part name="parameters" element="ns:getGoodsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="testServiceRequest">
+        <wsdl:part name="parameters" element="ns:testService"/>
+    </wsdl:message>
+    <wsdl:message name="testServiceResponse">
+        <wsdl:part name="parameters" element="ns:testServiceResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="WebserviceSEIPortType">
+        <wsdl:operation name="sayHelloTo">
+            <wsdl:input message="ns:sayHelloToRequest" wsaw:Action="urn:sayHelloTo"/>
+            <wsdl:output message="ns:sayHelloToResponse" wsaw:Action="urn:sayHelloToResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="getGoods">
+            <wsdl:input message="ns:getGoodsRequest" wsaw:Action="urn:getGoods"/>
+            <wsdl:output message="ns:getGoodsResponse" wsaw:Action="urn:getGoodsResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="testService">
+            <wsdl:input message="ns:testServiceRequest" wsaw:Action="urn:testService"/>
+            <wsdl:output message="ns:testServiceResponse" wsaw:Action="urn:testServiceResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="WebserviceSEISoap11Binding" type="ns:WebserviceSEIPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="sayHelloTo">
+            <soap:operation soapAction="urn:sayHelloTo" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getGoods">
+            <soap:operation soapAction="urn:getGoods" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="testService">
+            <soap:operation soapAction="urn:testService" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="WebserviceSEISoap12Binding" type="ns:WebserviceSEIPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="sayHelloTo">
+            <soap12:operation soapAction="urn:sayHelloTo" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getGoods">
+            <soap12:operation soapAction="urn:getGoods" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="testService">
+            <soap12:operation soapAction="urn:testService" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="WebserviceSEIHttpBinding" type="ns:WebserviceSEIPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="sayHelloTo">
+            <http:operation location="sayHelloTo"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getGoods">
+            <http:operation location="getGoods"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="testService">
+            <http:operation location="testService"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="WebserviceSEI">
+        <wsdl:port name="WebserviceSEIHttpSoap11Endpoint" binding="ns:WebserviceSEISoap11Binding">
+            <soap:address location="http://localhost:8080//services/com/demotivirus/Day_109/WebserviceSEI"/>
+        </wsdl:port>
+        <wsdl:port name="WebserviceSEIHttpSoap12Endpoint" binding="ns:WebserviceSEISoap12Binding">
+            <soap12:address location="http://localhost:8080//services/com/demotivirus/Day_109/WebserviceSEI"/>
+        </wsdl:port>
+        <wsdl:port name="WebserviceSEIHttpEndpoint" binding="ns:WebserviceSEIHttpBinding">
+            <http:address location="http://localhost:8080//services/com/demotivirus/Day_109/WebserviceSEI"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

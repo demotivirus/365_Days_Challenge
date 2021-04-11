@@ -2,8 +2,7 @@ package com.demotivirus.Day_109;
 
 import javax.jws.WebService;
 
-@WebService(endpointInterface = "com.demotivirus.Day_109.WebserviceSEI",
-        serviceName = "HelloSoap")
+@WebService(serviceName = "HelloSoap")
 public class HelloSoap implements WebserviceSEI {
     @Override
     public String testService() {
