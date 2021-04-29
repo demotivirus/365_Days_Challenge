@@ -65,10 +65,12 @@ public class Main {
                 if (payStrategy.pay(order.getTotalCost())) {
                     System.out.println("Payment successful");
                     order.clearOrderCost();
+                    payStrategy = null;
                 }
                 else {
                     System.out.println("Not enough money");
                     order.clearOrderCost();
+                    payStrategy = null;
                 }
             }
         }
