@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.SneakyThrows;
 
 @Getter @Setter
 @NoArgsConstructor
@@ -17,6 +18,7 @@ public class Demo {
     }
 
     @Override
+    @Deprecated
     public String toString() {
         return "Demo{" +
                 "publicField=" + publicField +
