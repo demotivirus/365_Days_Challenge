@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Club {
+    private Shop shop = new Shop();
     private Map<People, Boolean> peoplesIsAccess = new HashMap<>();
 
     public void checkAge(People people) {
@@ -19,12 +20,7 @@ public class Club {
     
     public void buyWhiskey(People people) {
         if (peoplesIsAccess.get(people) != null) {
-            if (peoplesIsAccess.get(people) == true) {
-                if (people.getMoney().getValue() >= 100) {
-                    people.getMoney().divisionMoney(100);
-                    peoplesIsAccess.put(people, true);
-                } else System.out.println("Not now " + people.getName());
-            } else System.out.println("Not now " + people.getName());
+            shop.buyWhiskey(people, peoplesIsAccess.get(people));
         } else System.out.println("Not now " + people.getName());
     }
 }
