@@ -1,0 +1,13 @@
+<InsuranceApp xmlns="https://demotivirus.com">
+    <User>
+        <FirstName>Sara</FirstName>
+    </User>
+
+    <InsuranceInfo>
+        <product>Widget Gold</product>
+    </InsuranceInfo>
+
+    <WidgetInfo>
+        <wgtAmount>5000.00</wgtAmount>
+    </WidgetInfo>
+</InsuranceApp>
