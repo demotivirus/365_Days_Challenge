@@ -131,6 +131,12 @@
 			<artifactId>axis2-java2wsdl</artifactId>
 			<version>1.7.9</version>
 		</dependency>
+
+		<!-- KAFKA -->
+		<dependency>
+			<groupId>org.springframework.kafka</groupId>
+			<artifactId>spring-kafka</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
