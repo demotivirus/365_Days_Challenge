@@ -1,0 +1,6 @@
+POST http://localhost:8080/publish?message=Hello
+Accept: application/json
+
+<> 2021-05-25T000344.405.json
+
+###
