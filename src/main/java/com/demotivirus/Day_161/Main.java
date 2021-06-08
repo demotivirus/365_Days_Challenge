@@ -3,7 +3,6 @@ package com.demotivirus.Day_161;
 public class Main {
     public static void main(String[] args) {
         Author author = new Author("Johan Shtrauss");
-
         Book book = new Book("Great book");
         book.addAuthor(author);
 
