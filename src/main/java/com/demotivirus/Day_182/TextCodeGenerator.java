@@ -57,10 +57,10 @@ public class TextCodeGenerator {
                 } else {
                     sb.append("\t").append("public ").append(v).append(" ").append(k).append(" {\n");
                     if (!v.contains("void")) {
-                        if (v.contains("int")) sb.append("return 0;\n\t}");
-                        else sb.append("\t\treturn null;\n\t}");
+                        if (v.contains("int")) sb.append("\t\treturn 0;\n\t}\n");
+                        else sb.append("\t\t\n\t\treturn null;\n\t}\n");
                     } else {
-                        sb.append("\t\t\n\t}");
+                        sb.append("\t\t\n\t}\n");
                     }
                 }
             });

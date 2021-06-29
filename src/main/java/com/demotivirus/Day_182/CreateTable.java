@@ -39,7 +39,8 @@ public class CreateTable {
                         //.split(",");
                 String[] keyValue = substring2.substring(0, substring2.length() - 1).split(",");
 
-                Map<String, String> fieldAndType = new HashMap<>();
+                //todo 30.06 - add constructor
+                Map<String, String> fieldAndType = new HashMap<>(); //todo 30.06 - not use map
                 for (String s : keyValue) {
                     String[] split = s.trim().split(" ");
                     String type = split[1];
@@ -50,11 +51,11 @@ public class CreateTable {
                     )
                         split[1] = "String";
                     if (type.equalsIgnoreCase("int") || type.equalsIgnoreCase("int)"))
-                        split[1] = "int";
+                        split[1] = "int"; //todo 30.06 - add many types
 
                     if (type.equalsIgnoreCase("void") || type.equalsIgnoreCase("void)"))
                         split[1] = "void";
-                    if (s.contains("references") || s.contains("REFERENCES")) {
+                    if (s.contains("references") || s.contains("REFERENCES")) { //todo 30.06 - work this case for ( & )
                         fieldAndType.putIfAbsent(split[0], split[3]); //demo Demo
                     } else {
                         String fieldName = split[0];
