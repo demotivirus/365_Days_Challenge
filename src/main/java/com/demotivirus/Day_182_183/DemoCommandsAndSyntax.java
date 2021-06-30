@@ -1,4 +1,4 @@
-package com.demotivirus.Day_182;
+package com.demotivirus.Day_182_183;
 
 public class DemoCommandsAndSyntax {
     public static void print() {
@@ -7,7 +7,7 @@ public class DemoCommandsAndSyntax {
                 SQL mixed               create table User (firstName char, Role role); //not working et
                 Java syntax             public class User (String firstName, Role role); //not working et
                 
-                SQL syntax + methods    create table User (password char, getPass() varchar, setPass() void);
+                SQL syntax + methods    create table User (password char) methods (void addUser(User user); String getUserInfo(User user)); //not working et
                 """);
     }
 }
