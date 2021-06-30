@@ -1,4 +1,4 @@
-package com.demotivirus.Day_182;
+package com.demotivirus.Day_182_183;
 
 import java.util.Scanner;
 

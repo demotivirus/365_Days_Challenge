@@ -1,6 +1,6 @@
-package com.demotivirus.Day_182;
+package com.demotivirus.Day_182_183;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class CreateTable {
@@ -12,15 +12,6 @@ public class CreateTable {
         int startIndex = keyString.length();
         if (query.toUpperCase().startsWith(keyString)) {
             String substring = query.substring(startIndex);
-
-//            String[] split = substring.split(" ");
-//            for (int i = 0; i < split.length; i++) {
-//                if (split.length == 1) {
-//                    String stringWithoutLastSymbol = substring.substring(0, substring.length() - 1);
-//                    simpleClassCreator.create(stringWithoutLastSymbol);
-//                    textCodeGenerator.generate(stringWithoutLastSymbol);
-//                }
-//            }
             if (!substring.contains("(") || !substring.contains(")")) {
                 String stringWithoutLastSymbol = substring.substring(0, substring.length() - 1);
                 simpleClassCreator.create(stringWithoutLastSymbol);
@@ -37,10 +28,17 @@ public class CreateTable {
                         .replace(";", "")
                         .trim();
                         //.split(",");
-                String[] keyValue = substring2.substring(0, substring2.length() - 1).split(",");
+//                String[] keys =
+//                        substring2.substring(0, substring2.length() - 1)
+//                                .split("[\\w]+[,)]");
+//                String[] values = substring2.substring(0, substring2.length() - 1)
+//                        .split("([\\w]+[(][\\w]+[\\s,\\w]+[)])|([(\\s][\\w]+[\\s])");
+
+                String[] keyValue = substring2.substring(0, substring2.length() - 1)
+                        .split(","); //todo 30.06 - not split correctly
 
                 //todo 30.06 - add constructor
-                Map<String, String> fieldAndType = new HashMap<>(); //todo 30.06 - not use map
+                Map<String, String> fieldAndType = new LinkedHashMap<>();
                 for (String s : keyValue) {
                     String[] split = s.trim().split(" ");
                     String type = split[1];

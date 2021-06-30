@@ -1,13 +1,13 @@
-package com.demotivirus.Day_182;
+package com.demotivirus.Day_182_183;
 
 import java.util.Scanner;
 
-import static com.demotivirus.Day_178.constants.Commands.HELP;
-import static com.demotivirus.Day_178.constants.Commands.P;
-import static com.demotivirus.Day_178.constants.Commands.PACKAGE;
-import static com.demotivirus.Day_178.constants.Commands.PATH;
-import static com.demotivirus.Day_179.constants.Commands.DEMO;
-import static com.demotivirus.Day_181.constants.Commands.QUIT;
+import static com.demotivirus.Day_182_183.constants.Commands.HELP;
+import static com.demotivirus.Day_182_183.constants.Commands.P;
+import static com.demotivirus.Day_182_183.constants.Commands.PACKAGE;
+import static com.demotivirus.Day_182_183.constants.Commands.PATH;
+import static com.demotivirus.Day_182_183.constants.Commands.DEMO;
+import static com.demotivirus.Day_182_183.constants.Commands.QUIT;
 
 public class Menu {
     public void readMenu(Scanner scn) {
