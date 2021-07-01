@@ -1,13 +1,19 @@
-package com.demotivirus.Day_182_183;
+package com.demotivirus.Day_182_184;
+
+import com.demotivirus.Day_182_184.commands.DemoCommandsAndSyntax;
+import com.demotivirus.Day_182_184.commands.HelpCommands;
+import com.demotivirus.Day_182_184.parser.CreateTable;
+import com.demotivirus.Day_182_184.path.settings.PackageCreator;
+import com.demotivirus.Day_182_184.path.settings.PathCreator;
 
 import java.util.Scanner;
 
-import static com.demotivirus.Day_182_183.constants.Commands.HELP;
-import static com.demotivirus.Day_182_183.constants.Commands.P;
-import static com.demotivirus.Day_182_183.constants.Commands.PACKAGE;
-import static com.demotivirus.Day_182_183.constants.Commands.PATH;
-import static com.demotivirus.Day_182_183.constants.Commands.DEMO;
-import static com.demotivirus.Day_182_183.constants.Commands.QUIT;
+import static com.demotivirus.Day_182_184.constants.Commands.HELP;
+import static com.demotivirus.Day_182_184.constants.Commands.P;
+import static com.demotivirus.Day_182_184.constants.Commands.PACKAGE;
+import static com.demotivirus.Day_182_184.constants.Commands.PATH;
+import static com.demotivirus.Day_182_184.constants.Commands.DEMO;
+import static com.demotivirus.Day_182_184.constants.Commands.QUIT;
 
 public class Menu {
     public void readMenu(Scanner scn) {
