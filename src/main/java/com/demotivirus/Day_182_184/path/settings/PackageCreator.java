@@ -2,7 +2,7 @@ package com.demotivirus.Day_182_184.path.settings;
 
 import lombok.Getter;
 
-import static com.demotivirus.Day_182_184.constants.Commands.PACKAGE;
+import static com.demotivirus.Day_182_184.constants.Command.PACKAGE;
 
 public class PackageCreator {
     @Getter

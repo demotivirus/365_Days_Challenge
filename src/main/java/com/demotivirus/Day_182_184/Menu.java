@@ -8,12 +8,12 @@ import com.demotivirus.Day_182_184.path.settings.PathCreator;
 
 import java.util.Scanner;
 
-import static com.demotivirus.Day_182_184.constants.Commands.HELP;
-import static com.demotivirus.Day_182_184.constants.Commands.P;
-import static com.demotivirus.Day_182_184.constants.Commands.PACKAGE;
-import static com.demotivirus.Day_182_184.constants.Commands.PATH;
-import static com.demotivirus.Day_182_184.constants.Commands.DEMO;
-import static com.demotivirus.Day_182_184.constants.Commands.QUIT;
+import static com.demotivirus.Day_182_184.constants.Command.HELP;
+import static com.demotivirus.Day_182_184.constants.Command.P;
+import static com.demotivirus.Day_182_184.constants.Command.PACKAGE;
+import static com.demotivirus.Day_182_184.constants.Command.PATH;
+import static com.demotivirus.Day_182_184.constants.Command.DEMO;
+import static com.demotivirus.Day_182_184.constants.Command.QUIT;
 
 public class Menu {
     public void readMenu(Scanner scn) {

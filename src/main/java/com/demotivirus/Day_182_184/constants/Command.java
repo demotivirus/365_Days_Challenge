@@ -1,6 +1,6 @@
 package com.demotivirus.Day_182_184.constants;
 
-public enum Commands {
+public enum Command {
     P("-P"),
     PATH("--path"),
     PACKAGE("--package"),
@@ -10,7 +10,7 @@ public enum Commands {
 
     ;
 
-    Commands(String command) {
+    Command(String command) {
         this.command = command;
     }
 
