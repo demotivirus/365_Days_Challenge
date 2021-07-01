@@ -1,8 +1,7 @@
 package com.demotivirus.Day_182_184.parser;
 
+import com.demotivirus.Day_182_184.parser.creator.CreateClassWithMethods;
 import com.demotivirus.Day_182_184.parser.creator.CreateSimpleClass;
-import com.demotivirus.Day_182_184.text.TextCodeGenerator;
-import com.demotivirus.Day_182_184.util.ClassCreator;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -38,7 +37,7 @@ public class CreateTable {
                     String[] split = s.trim().split(" ");
 
                     String oldType = split[1];
-                    split[1] = TypeParser.parse(oldType);
+                    split[1] = ParseOldTypeFieldInNewType.parse(oldType);
 
                     if (s.contains("references") || s.contains("REFERENCES")) { //todo 30.06 - work this case for ( & )
                         fieldAndType.putIfAbsent(split[0], split[3]); //demo Demo
@@ -48,9 +47,7 @@ public class CreateTable {
                         fieldAndType.putIfAbsent(fieldName, fieldTypeWithoutLastBracket); //firstName String
                     }
                 }
-                ClassCreator.create(tableName);
-                TextCodeGenerator.generate(tableName, fieldAndType);
-                System.out.println(fieldAndType);
+                CreateClassWithMethods.create(tableName, fieldAndType);
             }
         }
     }
