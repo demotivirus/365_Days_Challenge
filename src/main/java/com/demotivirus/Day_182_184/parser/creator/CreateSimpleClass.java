@@ -1,0 +1,12 @@
+package com.demotivirus.Day_182_184.parser.creator;
+
+import com.demotivirus.Day_182_184.text.SimpleTextCodeGenerator;
+import com.demotivirus.Day_182_184.util.ClassCreator;
+
+public class CreateSimpleClass {
+    public static void create(String textWithoutKeyWord) {
+        String stringWithoutLastSymbol = textWithoutKeyWord.substring(0, textWithoutKeyWord.length() - 1);
+        ClassCreator.create(stringWithoutLastSymbol);
+        SimpleTextCodeGenerator.generate(stringWithoutLastSymbol);
+    }
+}
