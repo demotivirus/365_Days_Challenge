@@ -45,7 +45,4 @@ public class Menu {
             }
         }
     }
-    public void readMenu(Scanner scn) {
-
-    }
 }
