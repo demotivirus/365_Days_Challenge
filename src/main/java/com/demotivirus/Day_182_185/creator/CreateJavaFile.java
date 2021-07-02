@@ -1,6 +1,6 @@
-package com.demotivirus.Day_182_184.util;
+package com.demotivirus.Day_182_185.creator;
 
-import com.demotivirus.Day_182_184.path.settings.PathCreator;
+import com.demotivirus.Day_182_185.path.settings.PathCreator;
 
 import java.io.File;
 import java.io.IOException;

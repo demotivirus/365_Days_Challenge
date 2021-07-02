@@ -1,7 +1,7 @@
-package com.demotivirus.Day_182_184.parser.creator;
+package com.demotivirus.Day_182_185.parser.create;
 
-import com.demotivirus.Day_182_184.text.GenerateTextInFile;
-import com.demotivirus.Day_182_184.util.CreateJavaFile;
+import com.demotivirus.Day_182_185.creator.CreateJavaFile;
+import com.demotivirus.Day_182_185.text.GenerateTextInFile;
 
 import java.util.Map;
 

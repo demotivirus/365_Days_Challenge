@@ -1,4 +1,4 @@
-package com.demotivirus.Day_182_184.util;
+package com.demotivirus.Day_182_185.text.writer;
 
 import java.io.BufferedWriter;
 import java.io.File;
