@@ -1,26 +1,28 @@
-package com.demotivirus.Day_182_184;
+package com.demotivirus.Day_182_185;
 
-import com.demotivirus.Day_182_184.commands.DemoCommandsAndSyntax;
-import com.demotivirus.Day_182_184.commands.HelpCommands;
-import com.demotivirus.Day_182_184.parser.CreateTable;
-import com.demotivirus.Day_182_184.path.settings.PackageCreator;
-import com.demotivirus.Day_182_184.path.settings.PathCreator;
+import com.demotivirus.Day_182_185.commands.DemoCommandsAndSyntax;
+import com.demotivirus.Day_182_185.commands.HelpCommands;
+import com.demotivirus.Day_182_185.parser.CreateTableParser;
+import com.demotivirus.Day_182_185.path.settings.PackageCreator;
+import com.demotivirus.Day_182_185.path.settings.PathCreator;
 
 import java.util.Scanner;
 
-import static com.demotivirus.Day_182_184.constants.Command.HELP;
-import static com.demotivirus.Day_182_184.constants.Command.P;
-import static com.demotivirus.Day_182_184.constants.Command.PACKAGE;
-import static com.demotivirus.Day_182_184.constants.Command.PATH;
-import static com.demotivirus.Day_182_184.constants.Command.DEMO;
-import static com.demotivirus.Day_182_184.constants.Command.QUIT;
+import static com.demotivirus.Day_182_185.constants.Command.HELP;
+import static com.demotivirus.Day_182_185.constants.Command.P;
+import static com.demotivirus.Day_182_185.constants.Command.PACKAGE;
+import static com.demotivirus.Day_182_185.constants.Command.PATH;
+import static com.demotivirus.Day_182_185.constants.Command.DEMO;
+import static com.demotivirus.Day_182_185.constants.Command.QUIT;
 
 public class Menu {
-    public void readMenu(Scanner scn) {
-        CreateTable table = new CreateTable();
+    public static void main(String[] args) {
+        CreateTableParser parser = new CreateTableParser();
         PathCreator pathCreator = new PathCreator();
+        Scanner scn = new Scanner(System.in);
         String command = "";
 
+        System.out.println("USE --help for menu");
         while (scn.hasNextLine()) {
             command = scn.nextLine();
             if (command != null) {
@@ -33,7 +35,7 @@ public class Menu {
                 if (command.startsWith(DEMO.getCommand()))
                     DemoCommandsAndSyntax.print();
                 if (command.toUpperCase().startsWith("CREATE TABLE ")) {
-                    table.create(command);
+                    parser.parseQuery(command);
                 }
                 if (command.startsWith(QUIT.getCommand())) {
                     System.out.println("GENERATE SUCCESS");
