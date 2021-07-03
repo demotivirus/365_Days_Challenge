@@ -1,4 +1,4 @@
-package com.demotivirus.Day_182_185.commands;
+package com.demotivirus.Day_182_186.commands;
 
 public class DemoCommandsAndSyntax {
     public static void print() {
