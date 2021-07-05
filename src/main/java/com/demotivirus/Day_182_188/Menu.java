@@ -1,21 +1,21 @@
-package com.demotivirus.Day_182_187;
+package com.demotivirus.Day_182_188;
 
-import com.demotivirus.Day_182_187.commands.DemoBugCommands;
-import com.demotivirus.Day_182_187.commands.DemoCommandsAndSyntax;
-import com.demotivirus.Day_182_187.commands.HelpCommands;
-import com.demotivirus.Day_182_187.parser.CreateTableParser;
-import com.demotivirus.Day_182_187.path.settings.PackageCreator;
-import com.demotivirus.Day_182_187.path.settings.PathCreator;
+import com.demotivirus.Day_182_188.commands.DemoBugCommands;
+import com.demotivirus.Day_182_188.commands.DemoCommandsAndSyntax;
+import com.demotivirus.Day_182_188.commands.HelpCommands;
+import com.demotivirus.Day_182_188.parser.CreateTableParser;
+import com.demotivirus.Day_182_188.path.settings.PackageCreator;
+import com.demotivirus.Day_182_188.path.settings.PathCreator;
 
 import java.util.Scanner;
 
-import static com.demotivirus.Day_182_187.constants.Command.BUG_COMMANDS_DEMO;
-import static com.demotivirus.Day_182_187.constants.Command.DEMO;
-import static com.demotivirus.Day_182_187.constants.Command.HELP;
-import static com.demotivirus.Day_182_187.constants.Command.P;
-import static com.demotivirus.Day_182_187.constants.Command.PACKAGE;
-import static com.demotivirus.Day_182_187.constants.Command.PATH;
-import static com.demotivirus.Day_182_187.constants.Command.QUIT;
+import static com.demotivirus.Day_182_188.constants.Command.BUG_COMMANDS_DEMO;
+import static com.demotivirus.Day_182_188.constants.Command.DEMO;
+import static com.demotivirus.Day_182_188.constants.Command.HELP;
+import static com.demotivirus.Day_182_188.constants.Command.P;
+import static com.demotivirus.Day_182_188.constants.Command.PACKAGE;
+import static com.demotivirus.Day_182_188.constants.Command.PATH;
+import static com.demotivirus.Day_182_188.constants.Command.QUIT;
 
 public class Menu {
     public static void main(String[] args) {
