@@ -1,9 +1,9 @@
-package com.demotivirus.Day_182_187.parser;
+package com.demotivirus.Day_182_188.parser;
 
-import com.demotivirus.Day_182_187.parser.create.CreateSimpleClass;
-import com.demotivirus.Day_182_187.text.GenerateFullTextAndCreateClass;
-import com.demotivirus.Day_182_187.text.GenerateTextForFields;
-import com.demotivirus.Day_182_187.text.GenerateTextForMethods;
+import com.demotivirus.Day_182_188.parser.create.CreateSimpleClass;
+import com.demotivirus.Day_182_188.text.GenerateFullTextAndCreateClass;
+import com.demotivirus.Day_182_188.text.GenerateTextForFields;
+import com.demotivirus.Day_182_188.text.GenerateTextForMethods;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -32,8 +32,10 @@ public class CreateTableParser {
                 String fields = parseQueryWithoutMethods(tableName, textWithoutFirstBrace);
                 String methods = parseQueryWithMethodsKeyWord(tableName, textWithoutFirstBrace);
 
-                GenerateFullTextAndCreateClass.generate(tableName, fields, methods);
-                
+                if (methods.isEmpty())
+                    GenerateFullTextAndCreateClass.generate(tableName, fields);
+                else GenerateFullTextAndCreateClass.generate(tableName, fields, methods);
+
 
 //                if (textWithoutFirstBrace.toLowerCase().contains("methods ("))
 //                    parseQueryWithMethodsKeyWord(tableName, textWithoutFirstBrace);
@@ -43,7 +45,12 @@ public class CreateTableParser {
     }
 
     private String parseQueryWithoutMethods(String tableName, String query) {
-        String[] keyValue = query.substring(0, query.length() - 1)
+        String keyWord = null;
+        if (query.contains("methods")) {
+            keyWord = ") methods";
+        } else keyWord = ");";
+        int index = query.indexOf(keyWord);
+        String[] keyValue = query.substring(0, index)
                 .split(","); //todo 30.06 - not split correctly
 
         //todo 30.06 - add constructor
@@ -68,16 +75,19 @@ public class CreateTableParser {
 
     private String parseQueryWithMethodsKeyWord(String tableName, String query) {
         String keyWord = "methods (";
-        int index = query.indexOf(keyWord);
-        String queryWithoutMethodKeyWord = query.substring(index + keyWord.length(), query.length() - 2);
+        if (query.contains(keyWord)) {
 
-        String[] keyValue = queryWithoutMethodKeyWord.split(";");
+            int index = query.indexOf(keyWord);
+            String queryWithoutMethodKeyWord = query.substring(index + keyWord.length(), query.length() - 2);
 
-        List<String> methods = new ArrayList<>();
-        for (String s : keyValue) {
-            methods.add(s.trim());
-        }
-        return GenerateTextForMethods.getText(tableName, methods);
+            String[] keyValue = queryWithoutMethodKeyWord.split(";");
+
+            List<String> methods = new ArrayList<>();
+            for (String s : keyValue) {
+                methods.add(s.trim());
+            }
+            return GenerateTextForMethods.getText(tableName, methods);
+        } else return "";
         // CreateClassWithMethods.create(tableName, methods);
     }
 }

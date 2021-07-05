@@ -1,4 +1,4 @@
-package com.demotivirus.Day_182_187.parser;
+package com.demotivirus.Day_182_188.parser;
 
 public class ParseOldTypeFieldInNewType {
     public static String parse(String oldType) { //todo 30.06 - add many types

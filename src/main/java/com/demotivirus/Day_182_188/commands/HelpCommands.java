@@ -1,4 +1,4 @@
-package com.demotivirus.Day_182_187.commands;
+package com.demotivirus.Day_182_188.commands;
 
 public class HelpCommands {
     public static void print() {
