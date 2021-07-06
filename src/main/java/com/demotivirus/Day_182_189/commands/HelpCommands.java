@@ -1,4 +1,4 @@
-package com.demotivirus.Day_182_188.commands;
+package com.demotivirus.Day_182_189.commands;
 
 public class HelpCommands {
     public static void print() {
@@ -7,6 +7,7 @@ public class HelpCommands {
                 -P --path       specify file path to generating classes
                 --package       specify package name in generated classes
                 --demo          demonstrate working requests & show syntax
+                --hot           hot commands for variables, methods & classes
                 \\q              exit from program
                 """);
     }

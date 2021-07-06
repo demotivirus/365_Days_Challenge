@@ -1,4 +1,4 @@
-package com.demotivirus.Day_182_188.constants;
+package com.demotivirus.Day_182_189.constants;
 
 public enum Command {
     P("-P"),
@@ -8,6 +8,7 @@ public enum Command {
     DEMO("--demo"),
     QUIT("\\q"),
     BUG_COMMANDS_DEMO("--bugs"),
+    HOT_COMMANDS("--hot"),
 
     ;
 

@@ -1,9 +1,9 @@
-package com.demotivirus.Day_182_188.parser;
+package com.demotivirus.Day_182_189.parser;
 
-import com.demotivirus.Day_182_188.parser.create.CreateSimpleClass;
-import com.demotivirus.Day_182_188.text.GenerateFullTextAndCreateClass;
-import com.demotivirus.Day_182_188.text.GenerateTextForFields;
-import com.demotivirus.Day_182_188.text.GenerateTextForMethods;
+import com.demotivirus.Day_182_189.parser.create.CreateSimpleClass;
+import com.demotivirus.Day_182_189.text.GenerateFullTextAndCreateClass;
+import com.demotivirus.Day_182_189.text.GenerateTextForFields;
+import com.demotivirus.Day_182_189.text.GenerateTextForMethods;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -34,6 +34,8 @@ public class CreateTableParser {
 
                 if (methods.isEmpty())
                     GenerateFullTextAndCreateClass.generate(tableName, fields);
+                else if (fields.isEmpty())
+                    GenerateFullTextAndCreateClass.gen(tableName, methods);
                 else GenerateFullTextAndCreateClass.generate(tableName, fields, methods);
 
 
@@ -47,11 +49,11 @@ public class CreateTableParser {
     private String parseQueryWithoutMethods(String tableName, String query) {
         String keyWord = null;
         if (query.contains("methods")) {
-            keyWord = ") methods";
+            keyWord = " methods";
         } else keyWord = ");";
         int index = query.indexOf(keyWord);
-        String[] keyValue = query.substring(0, index)
-                .split(","); //todo 30.06 - not split correctly
+        String[] keyValue = query.substring(0, index) //todo 06.07 - if query contains only methods bug here
+                .split(",");
 
         //todo 30.06 - add constructor
         Map<String, String> fieldAndType = new LinkedHashMap<>();
@@ -84,7 +86,7 @@ public class CreateTableParser {
 
             List<String> methods = new ArrayList<>();
             for (String s : keyValue) {
-                methods.add(s.trim());
+                methods.add(ParseCommandInText.parse(s.trim()));
             }
             return GenerateTextForMethods.getText(tableName, methods);
         } else return "";
