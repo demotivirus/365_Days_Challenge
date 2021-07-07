@@ -1,4 +1,4 @@
-package com.demotivirus.Day_182_189.commands;
+package com.demotivirus.Day_182_190.commands;
 
 public class DemoBugCommands {
     public static void print() {

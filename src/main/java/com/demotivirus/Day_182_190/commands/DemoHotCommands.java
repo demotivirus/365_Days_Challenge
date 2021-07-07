@@ -1,4 +1,4 @@
-package com.demotivirus.Day_182_189.commands;
+package com.demotivirus.Day_182_190.commands;
 
 public class DemoHotCommands {
     public static void print() { //todo 06.07 - add commands in parser

@@ -1,8 +1,8 @@
-package com.demotivirus.Day_182_189.path.settings;
+package com.demotivirus.Day_182_190.path.settings;
 
 import lombok.Getter;
 
-import static com.demotivirus.Day_182_189.constants.Command.PACKAGE;
+import static com.demotivirus.Day_182_190.constants.Command.PACKAGE;
 
 public class PackageCreator {
     @Getter
