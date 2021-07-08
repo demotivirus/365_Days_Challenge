@@ -1,7 +1,7 @@
-package com.demotivirus.Day_182_190.parser.create;
+package com.demotivirus.Day_182_191.parser.create;
 
-import com.demotivirus.Day_182_190.creator.CreateJavaFile;
-import com.demotivirus.Day_182_190.text.GenerateSimpleTextInFile;
+import com.demotivirus.Day_182_191.creator.CreateJavaFile;
+import com.demotivirus.Day_182_191.text.GenerateSimpleTextInFile;
 
 public class CreateSimpleClass {
     public static void create(String textWithoutKeyWord) {

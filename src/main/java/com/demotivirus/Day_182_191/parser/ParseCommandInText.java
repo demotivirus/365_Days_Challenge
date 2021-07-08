@@ -1,4 +1,4 @@
-package com.demotivirus.Day_182_190.parser;
+package com.demotivirus.Day_182_191.parser;
 
 public class ParseCommandInText {
     public static String parse(String text) {

@@ -1,23 +1,23 @@
-package com.demotivirus.Day_182_190;
+package com.demotivirus.Day_182_191;
 
-import com.demotivirus.Day_182_190.commands.DemoBugCommands;
-import com.demotivirus.Day_182_190.commands.DemoCommandsAndSyntax;
-import com.demotivirus.Day_182_190.commands.DemoHotCommands;
-import com.demotivirus.Day_182_190.commands.HelpCommands;
-import com.demotivirus.Day_182_190.parser.CreateTableParser;
-import com.demotivirus.Day_182_190.path.settings.PackageCreator;
-import com.demotivirus.Day_182_190.path.settings.PathCreator;
+import com.demotivirus.Day_182_191.commands.DemoBugCommands;
+import com.demotivirus.Day_182_191.commands.DemoCommandsAndSyntax;
+import com.demotivirus.Day_182_191.commands.DemoHotCommands;
+import com.demotivirus.Day_182_191.commands.HelpCommands;
+import com.demotivirus.Day_182_191.parser.CreateTableParser;
+import com.demotivirus.Day_182_191.path.settings.PackageCreator;
+import com.demotivirus.Day_182_191.path.settings.PathCreator;
 
 import java.util.Scanner;
 
-import static com.demotivirus.Day_182_190.constants.Command.BUG_COMMANDS_DEMO;
-import static com.demotivirus.Day_182_190.constants.Command.HOT_COMMANDS;
-import static com.demotivirus.Day_182_190.constants.Command.DEMO;
-import static com.demotivirus.Day_182_190.constants.Command.HELP;
-import static com.demotivirus.Day_182_190.constants.Command.P;
-import static com.demotivirus.Day_182_190.constants.Command.PACKAGE;
-import static com.demotivirus.Day_182_190.constants.Command.PATH;
-import static com.demotivirus.Day_182_190.constants.Command.QUIT;
+import static com.demotivirus.Day_182_191.constants.Command.BUG_COMMANDS_DEMO;
+import static com.demotivirus.Day_182_191.constants.Command.HOT_COMMANDS;
+import static com.demotivirus.Day_182_191.constants.Command.DEMO;
+import static com.demotivirus.Day_182_191.constants.Command.HELP;
+import static com.demotivirus.Day_182_191.constants.Command.P;
+import static com.demotivirus.Day_182_191.constants.Command.PACKAGE;
+import static com.demotivirus.Day_182_191.constants.Command.PATH;
+import static com.demotivirus.Day_182_191.constants.Command.QUIT;
 
 public class Menu {
     public static void main(String[] args) {

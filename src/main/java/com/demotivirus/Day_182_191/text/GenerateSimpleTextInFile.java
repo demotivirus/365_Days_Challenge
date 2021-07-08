@@ -1,7 +1,7 @@
-package com.demotivirus.Day_182_190.text;
+package com.demotivirus.Day_182_191.text;
 
-import com.demotivirus.Day_182_190.path.settings.PathCreator;
-import com.demotivirus.Day_182_190.text.writer.WriteTextInFile;
+import com.demotivirus.Day_182_191.path.settings.PathCreator;
+import com.demotivirus.Day_182_191.text.writer.WriteTextInFile;
 
 import java.io.File;
 

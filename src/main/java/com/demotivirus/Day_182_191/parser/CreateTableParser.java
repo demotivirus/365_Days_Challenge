@@ -1,9 +1,9 @@
-package com.demotivirus.Day_182_190.parser;
+package com.demotivirus.Day_182_191.parser;
 
-import com.demotivirus.Day_182_190.parser.create.CreateSimpleClass;
-import com.demotivirus.Day_182_190.text.GenerateFullTextAndCreateClass;
-import com.demotivirus.Day_182_190.text.GenerateTextForFields;
-import com.demotivirus.Day_182_190.text.GenerateTextForMethods;
+import com.demotivirus.Day_182_191.parser.create.CreateSimpleClass;
+import com.demotivirus.Day_182_191.text.GenerateFullTextAndCreateClass;
+import com.demotivirus.Day_182_191.text.GenerateTextForFields;
+import com.demotivirus.Day_182_191.text.GenerateTextForMethods;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
