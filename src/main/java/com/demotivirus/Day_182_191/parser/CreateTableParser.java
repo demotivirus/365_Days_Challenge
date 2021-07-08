@@ -29,7 +29,10 @@ public class CreateTableParser {
                         //.replace(";", "")
                         .trim();
 
-                String fields = parseQueryWithoutMethods(tableName, textWithoutFirstBrace);
+                String fields = "";
+                if (textWithoutFirstBrace.contains("methods"))
+                    fields = parseQueryWithoutMethods(tableName, textWithoutFirstBrace);
+
                 String methods = parseQueryWithMethodsKeyWord(tableName, textWithoutFirstBrace);
 
                 if (methods.isEmpty())
