@@ -1,7 +1,7 @@
-package com.demotivirus.Day_209.Tip_03;
+package com.demotivirus.Day_209_210.Tip_03;
 
-import com.demotivirus.Day_209.Tip_01.Rectangle;
-import com.demotivirus.Day_209.Tip_01.Shape;
+import com.demotivirus.Day_209_210.Tip_01.Rectangle;
+import com.demotivirus.Day_209_210.Tip_01.Shape;
 
 public class ShapeFactory {
     public static Shape create(String shapeName) {

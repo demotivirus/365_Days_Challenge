@@ -1,4 +1,4 @@
-package com.demotivirus.Day_209.Tip_02;
+package com.demotivirus.Day_209_210.Tip_02;
 
 public class Main {
     public static void main(String[] args) {
