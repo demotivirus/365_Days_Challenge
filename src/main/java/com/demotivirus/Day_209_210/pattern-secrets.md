@@ -4,4 +4,5 @@
 3) Use String or Enum in method param for: creating objects, find objects
 4) Use abstract class for creating concrete factories
 5) Use private constructor & private static field returning class - for creating singleton objects. Getter return field
-6) 
+6) Implements interface for adapter and use/return needing type
+7) 
