@@ -1,0 +1,94 @@
+-----------------------------FACTORY-------------------------------
+public class ShapeFactory {
+    private ShapeFactory(){}
+
+    public static Shape create(String shape){
+        switch (shape.toLowerCase()){
+            case "oval": return new Oval();
+            case "triangle": return new Triangle();
+            case "cube": return new Cube();
+        }
+        return null;
+    }
+
+    public static Shape createWithColor(String shape, Color color){
+        switch (shape.toLowerCase()){
+            case "oval": return new Oval(color);
+            case "triangle": return new Triangle(color);
+            case "cube": return new Cube(color);
+        }
+        return null;
+    }
+}
+---------------------------ABSTRACT FACTORY-----------------------------
+public class FactoryProducer {
+   public static AbstractFactory getFactory(boolean rounded){
+      if(rounded){
+         return new RoundedShapeFactory();
+      }else{
+         return new ShapeFactory();
+      }
+   }
+}
+----------------------------SINGLETON----------------------------------
+public class SingleObject {
+
+   //create an object of SingleObject
+   private static SingleObject instance = new SingleObject();
+
+   //make the constructor private so that this class cannot be
+   //instantiated
+   private SingleObject(){}
+
+   //Get the only object available
+   public static SingleObject getInstance(){
+      return instance;
+   }
+
+   public void showMessage(){
+      System.out.println("Hello World!");
+   }
+}
+----------------------------ADAPTER----------------------------------
+public class MediaAdapter implements MediaPlayer {
+
+   AdvancedMediaPlayer advancedMusicPlayer;
+
+   public MediaAdapter(String audioType){
+
+      if(audioType.equalsIgnoreCase("vlc") ){
+         advancedMusicPlayer = new VlcPlayer();
+
+      }else if (audioType.equalsIgnoreCase("mp4")){
+         advancedMusicPlayer = new Mp4Player();
+      }
+   }
+
+   @Override
+   public void play(String audioType, String fileName) {
+
+      if(audioType.equalsIgnoreCase("vlc")){
+         advancedMusicPlayer.playVlc(fileName);
+      }
+      else if(audioType.equalsIgnoreCase("mp4")){
+         advancedMusicPlayer.playMp4(fileName);
+      }
+   }
+}
+----------------------------BRIDGE----------------------------------
+public abstract class Shape {
+   protected DrawAPI drawAPI;
+
+   protected Shape(DrawAPI drawAPI){
+      this.drawAPI = drawAPI;
+   }
+   public abstract void draw();
+}
+--------------------------------------------------------------------
+public class Meal {
+    private List<Item> items = new ArrayList<>();
+
+    public void addItem(Item item) {
+        items.add(item);
+    }
+}
