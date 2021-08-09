@@ -8,6 +8,7 @@ import java.util.List;
 public class NonNullEx1 {
     public static void main(String[] args) {
         List<Integer> numbers = Arrays.asList(1, 2, null, 4, null, 5);
+        System.out.println(even(numbers));
     }
 
     private static List<Integer> even(List<Integer> numbers) {
@@ -16,7 +17,7 @@ public class NonNullEx1 {
             return Collections.emptyList();
 
         for (Integer num : numbers) {
-            if (num % 2 == 0)
+            if (num != null && num % 2 == 0)
                 even.add(num);
         }
 

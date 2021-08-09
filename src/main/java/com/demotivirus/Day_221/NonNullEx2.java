@@ -1,22 +1,20 @@
 package com.demotivirus.Day_221;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class NonNullEx2 {
     public static void main(String[] args) {
         List<Integer> numbers = Arrays.asList(1, 2, null, 4, null, 5);
+        System.out.println(even(numbers));
     }
 
     private static List<Integer> even(List<Integer> numbers) {
         List<Integer> even = new ArrayList<>();
-        if (numbers == null)
+        if (Objects.isNull(numbers))
             return Collections.emptyList();
 
         for (Integer num : numbers) {
-            if (num % 2 == 0)
+            if (Objects.nonNull(num) && num % 2 == 0)
                 even.add(num);
         }
 
