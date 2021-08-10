@@ -13,3 +13,5 @@
 11) In abstract class - implements interface and use interface in field
 12) Two interface fields in class 
 13) Use nested class for iterator
+14) One class depends on another
+15) Use save for get & get for field assignment
