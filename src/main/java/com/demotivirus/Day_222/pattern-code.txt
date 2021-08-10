@@ -234,11 +234,50 @@ public class NamedCollection implements Container{
         }
     }
 }
---------------------------------------------------------------------
-public class Meal {
-    private List<Item> items = new ArrayList<>();
+----------------------------MEDIATOR----------------------------------
+public class ChatRoom {
+    public static void showMessage(User user, String message) {
+        System.out.println(new Date() + " " + user.getName() + ": " + message);
+    }
+}
 
-    public void addItem(Item item) {
-        items.add(item);
+@Data
+@AllArgsConstructor
+public class User {
+    private String name;
+
+    public void sendMessage(String message) {
+        ChatRoom.showMessage(this, message);
+    }
+}
+----------------------------MEMENTO----------------------------------
+@Getter
+@AllArgsConstructor
+public class Memento {
+    private String state;
+}
+
+public class CareTaker {
+    private List<Memento> mementos = new ArrayList<>();
+
+    public void add(Memento memento) {
+        mementos.add(memento);
+    }
+
+    public Memento get(int index) {
+        return mementos.get(index);
+    }
+}
+
+@Data
+public class Original {
+    private String state;
+
+    public Memento saveStateToMemento() {
+        return new Memento(state);
+    }
+
+    public void getStateFromMemento(Memento memento) {
+        state = memento.getState();
     }
 }
