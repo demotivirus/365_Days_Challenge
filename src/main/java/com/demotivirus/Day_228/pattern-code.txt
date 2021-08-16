@@ -1,0 +1,337 @@
+-----------------------------FACTORY-------------------------------
+public class ShapeFactory {
+    private ShapeFactory(){}
+
+    public static Shape create(String shape){
+        switch (shape.toLowerCase()){
+            case "oval": return new Oval();
+            case "triangle": return new Triangle();
+            case "cube": return new Cube();
+        }
+        return null;
+    }
+
+    public static Shape createWithColor(String shape, Color color){
+        switch (shape.toLowerCase()){
+            case "oval": return new Oval(color);
+            case "triangle": return new Triangle(color);
+            case "cube": return new Cube(color);
+        }
+        return null;
+    }
+}
+---------------------------ABSTRACT FACTORY-----------------------------
+public class FactoryProducer {
+   public static AbstractFactory getFactory(boolean rounded){
+      if(rounded){
+         return new RoundedShapeFactory();
+      }else{
+         return new ShapeFactory();
+      }
+   }
+}
+----------------------------SINGLETON----------------------------------
+public class SingleObject {
+
+   //create an object of SingleObject
+   private static SingleObject instance = new SingleObject();
+
+   //make the constructor private so that this class cannot be
+   //instantiated
+   private SingleObject(){}
+
+   //Get the only object available
+   public static SingleObject getInstance(){
+      return instance;
+   }
+
+   public void showMessage(){
+      System.out.println("Hello World!");
+   }
+}
+----------------------------ADAPTER----------------------------------
+public class MediaAdapter implements MediaPlayer {
+
+   AdvancedMediaPlayer advancedMusicPlayer;
+
+   public MediaAdapter(String audioType){
+
+      if(audioType.equalsIgnoreCase("vlc") ){
+         advancedMusicPlayer = new VlcPlayer();
+
+      }else if (audioType.equalsIgnoreCase("mp4")){
+         advancedMusicPlayer = new Mp4Player();
+      }
+   }
+
+   @Override
+   public void play(String audioType, String fileName) {
+
+      if(audioType.equalsIgnoreCase("vlc")){
+         advancedMusicPlayer.playVlc(fileName);
+      }
+      else if(audioType.equalsIgnoreCase("mp4")){
+         advancedMusicPlayer.playMp4(fileName);
+      }
+   }
+}
+----------------------------BRIDGE----------------------------------
+public abstract class Shape {
+   protected DrawAPI drawAPI;
+
+   protected Shape(DrawAPI drawAPI){
+      this.drawAPI = drawAPI;
+   }
+   public abstract void draw();
+}
+----------------------------FILTER----------------------------------
+public interface Criteria {
+    List<Person> meetCriteria(List<Person> persons);
+}
+
+public class CriteriaFemale implements Criteria{
+    @Override
+    public List<Person> meetCriteria(List<Person> persons) {
+        List<Person> result = new ArrayList<>();
+        for (Person person : persons) {
+            if (person.getGender().equalsIgnoreCase("female"))
+                result.add(person);
+        }
+        return result;
+    }
+}
+
+@AllArgsConstructor
+public class AndCriteria implements Criteria {
+    private Criteria criteria;
+    private Criteria nextCriteria;
+
+    @Override
+    public List<Person> meetCriteria(List<Person> persons) {
+        List<Person> first = criteria.meetCriteria(persons);
+        return nextCriteria.meetCriteria(first);
+    }
+}
+
+@AllArgsConstructor
+public class OrCriteria implements Criteria {
+    private Criteria criteria;
+    private Criteria nextCriteria;
+
+    @Override
+    public List<Person> meetCriteria(List<Person> persons) {
+        List<Person> first = criteria.meetCriteria(persons);
+        List<Person> next = nextCriteria.meetCriteria(persons);
+
+        for (Person person : next) {
+            if (!first.contains(person)) {
+                first.add(person); //add as in bubble sort
+            }
+        }
+
+        return first;
+    }
+}
+
+public static void main(String[] args) {
+        List<Person> persons = new ArrayList<>();
+
+        persons.add(new Person("Robert","Male", "Single"));
+        persons.add(new Person("John", "Male", "Married"));
+        persons.add(new Person("Laura", "Female", "Married"));
+        persons.add(new Person("Diana", "Female", "Single"));
+        persons.add(new Person("Mike", "Male", "Single"));
+        persons.add(new Person("Bobby", "Male", "Single"));
+
+        Criteria male = new CriteriaMale();
+        Criteria female = new CriteriaFemale();
+        Criteria single = new CriteriaSingle();
+        Criteria singleMale = new AndCriteria(single, male);
+        Criteria singleOrFemale = new OrCriteria(single, female);
+
+        System.out.println("Males: ");
+        printPersons(male.meetCriteria(persons));
+
+        System.out.println("\nFemales: ");
+        printPersons(female.meetCriteria(persons));
+
+        System.out.println("\nSingle Males: ");
+        printPersons(singleMale.meetCriteria(persons));
+
+        System.out.println("\nSingle Or Females: ");
+        printPersons(singleOrFemale.meetCriteria(persons));
+}
+----------------------------COMPOSITE----------------------------------
+@ToString
+public class Employee {
+    private String name;
+    private String department;
+    private int salary;
+    private List<Employee> employees;
+
+    public Employee(String name, String department, int salary) {
+        this.name = name;
+        this.department = department;
+        this.salary = salary;
+        this.employees = new ArrayList<>();
+    }
+
+    public void add(Employee e) {
+        employees.add(e);
+    }
+
+    public void remove(Employee e) {
+        employees.remove(e);
+    }
+
+    public List<Employee> getEmployees(){
+        return employees;
+    }
+}
+----------------------------DECORATOR----------------------------------
+@AllArgsConstructor
+public abstract class ShapeDecorator implements Shape {
+    protected Shape shape;
+
+    public void draw() {
+        shape.draw();
+    }
+}
+----------------------------INTERPRETER----------------------------------
+@AllArgsConstructor
+public class OrExpression implements Expression {
+    private Expression exp1;
+    private Expression exp2;
+
+    @Override
+    public boolean interpret(String context) {
+        return exp1.interpret(context) || exp2.interpret(context);
+    }
+}
+----------------------------ITERATOR----------------------------------
+@ToString
+public class NamedCollection implements Container{
+    private String names[] = {"Robert" , "John" ,"Julie" , "Lora"};
+
+    @Override
+    public Iterator getIterator() {
+        return new NameIterator();
+    }
+
+    private class NameIterator implements Iterator {
+        private int index;
+
+        @Override
+        public boolean hasNext() {
+            return index < names.length;
+        }
+
+        @Override
+        public Object next() {
+            if (this.hasNext())
+                return names[index++];
+            return null;
+        }
+    }
+}
+----------------------------MEDIATOR----------------------------------
+public class ChatRoom {
+    public static void showMessage(User user, String message) {
+        System.out.println(new Date() + " " + user.getName() + ": " + message);
+    }
+}
+
+@Data
+@AllArgsConstructor
+public class User {
+    private String name;
+
+    public void sendMessage(String message) {
+        ChatRoom.showMessage(this, message);
+    }
+}
+----------------------------MEMENTO----------------------------------
+@Getter
+@AllArgsConstructor
+public class Memento {
+    private String state;
+}
+
+public class CareTaker {
+    private List<Memento> mementos = new ArrayList<>();
+
+    public void add(Memento memento) {
+        mementos.add(memento);
+    }
+
+    public Memento get(int index) {
+        return mementos.get(index);
+    }
+}
+
+@Data
+public class Original {
+    private String state;
+
+    public Memento saveStateToMemento() {
+        return new Memento(state);
+    }
+
+    public void getStateFromMemento(Memento memento) {
+        state = memento.getState();
+    }
+}
+----------------------------OBSERVER----------------------------------
+public abstract class Observer {
+    protected Subject subject;
+    public abstract void update();
+}
+
+public class Subject {
+    private List<Observer> observers = new ArrayList<>();
+    private int state;
+
+    public void setState(int state) {
+        this.state = state;
+        notifyAllObservers(); //use method in all subscriber classes
+    }
+
+    private void notifyAllObservers() {
+        for (Observer observer : observers) {
+            observer.update();
+        }
+    }
+
+    public void add(Observer observer) {
+        observers.add(observer);
+    }
+
+    public int getState() {
+        return state;
+    }
+}
+
+public class OctalObserver extends Observer {
+    public OctalObserver(Subject subject) {
+        this.subject = subject;
+        this.subject.add(this);
+    }
+
+    @Override
+    public void update() {
+        System.out.println("Octal string: " + Integer.toOctalString(subject.getState()));
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Subject subject = new Subject();
+        new HexObserver(subject);
+        new OctalObserver(subject);
+        new BinaryObserver(subject);
+
+        subject.setState(16); //send message from all observers
+        System.out.println("===================");
+        subject.setState(29);
+    }
+}
