@@ -1,10 +1,12 @@
 package com.demotivirus.Day_238;
 
-import lombok.SneakyThrows;
-
 public class LombokSneaky {
-    @SneakyThrows
+    //@SneakyThrows
     public void sneaky() {
-        throw new Exception();
+        try {
+            throw new Exception();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
